@@ -73,6 +73,7 @@ h1, .mode-selection, .result {
     font-size: 16px; /* Optional: Increase font size for better readability */
     border-radius: 8px; /* Optional: Add border-radius for rounded corners */
     border: 1px solid #ccc; /* Optional: Set border color */
+    color: #000;
 }
 
 #resistor-inputs {
@@ -104,6 +105,7 @@ button {
     border-radius: 4px;
     background-color: #fed700;
     border: 0px;
+    color: #000;
 }
 
 button:hover {
@@ -155,6 +157,7 @@ p {
     font-size: 16px; /* Optional: Increase font size for better readability */
     border-radius: 8px; /* Optional: Add border-radius for rounded corners */
     border: 1px solid #ccc; /* Optional: Set border color */
+    color: #000;
 }
 
 /* Responsive Design */

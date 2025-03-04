@@ -5,7 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: baseline; /* Centers both horizontally and vertically */
-    min-height: 100vh; /* Ensures the body always fills at least the full height of the viewport */
+
     background-color: #f4f4f4;
     margin: 0;
     padding: 10px;

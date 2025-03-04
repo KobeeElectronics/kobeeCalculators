@@ -52,6 +52,12 @@ body {
     width: fit-content;
 }
 
+.button-container {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
 .learnButtons:hover {
     background-color: #0056b3;
 }
@@ -90,17 +96,18 @@ input {
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #fed700;
-    color: #000;
-    border: none;
-    border-radius: 4px;
+    width: 48%; /* Slightly less than 50% to account for any margins/padding */
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
+    border-radius: 4px;
+    background-color: #fed700;
+    border: 0px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #ffe240;
 }
 
 .delete-button {
@@ -113,10 +120,11 @@ button:hover {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: middle;
+    width: 40px;
 }
 
 .delete-button:hover {
@@ -130,6 +138,23 @@ button:hover {
 
 p {
     text-align: center;
+}
+
+.unit-selection {
+    margin: 10px 0;
+}
+
+.unit-selection label {
+    font-size: 1rem;
+}
+
+.unit-selection select {
+    width: 50%; /* Make the dropdown take the full width of its container */
+    max-width: 500px; /* Set a maximum width if needed */
+    padding: 10px; /* Optional: Add padding for better spacing inside */
+    font-size: 16px; /* Optional: Increase font size for better readability */
+    border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+    border: 1px solid #ccc; /* Optional: Set border color */
 }
 
 /* Responsive Design */
@@ -150,3 +175,4 @@ p {
         width: 80%; /* Make images full width */
     }
 }
+

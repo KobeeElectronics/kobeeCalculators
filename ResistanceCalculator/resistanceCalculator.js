@@ -113,4 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
         resistorDiv.appendChild(deleteButton);
         resistorInputsDiv.appendChild(resistorDiv);
     }
+
+    function sendHeight() {
+        const height = document.body.scrollHeight;
+        // Send the height to the parent page
+        window.parent.postMessage({ height: height }, '*');
+      }
+    
+      // Call sendHeight when the content is loaded
+      window.onload = sendHeight;
+    
+      // Optionally, call sendHeight when content changes dynamically (e.g., form input changes)
+      window.addEventListener('resize', sendHeight);
 });

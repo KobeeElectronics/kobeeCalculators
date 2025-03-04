@@ -5,7 +5,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: baseline; /* Centers both horizontally and vertically */
-
     background-color: #f4f4f4;
     margin: 0;
     padding: 10px;
@@ -79,13 +78,15 @@ h1, .mode-selection, .result {
 
 #resistor-inputs {
     margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Create two columns */
+    gap: 0px; /* Space between the columns */
 }
 
 .resistor-input {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    padding-left: 20px;
 }
 
 input {
@@ -95,6 +96,8 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
     height: 40px;
+    width: 50%;
+    margin-left: 12px;
 }
 
 button {
@@ -178,5 +181,9 @@ p {
     .sideBannerBox img {
         width: 80%; /* Make images full width */
     }
-}
 
+    /* Stack the columns on mobile */
+    #resistor-inputs {
+        grid-template-columns: 1fr; /* Stack the fields in one column on mobile */
+    }
+}

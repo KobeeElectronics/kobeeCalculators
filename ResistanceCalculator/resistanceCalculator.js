@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const configHeading = document.getElementById('configHeading');
     const headerImage = document.getElementById('headerImage');
     const calculationImage = document.getElementById('calculationImage');
-    const unitSelect = document.getElementById('unit'); // Add this line to reference the unit selector
+    const unitSelect = document.getElementById('unit');
     let resistorCount = 2; // Start with 2 resistors
 
     // Add initial 2 resistors on page load
@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             headerImage.src = 'Images/Resistors-In-Parallel.svg';
             calculationImage.src = 'Images/Parallel-Resistor-Equation.svg';
         }
+
+        updateIframeHeight();  // Call to update iframe height after mode change
     });
 
     addResistorButton.addEventListener('click', () => {
@@ -84,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         resultValue.textContent = `Total Resistance: ${convertedResult.toFixed(4)} ${unitSymbol}`;
+
+        updateIframeHeight();  // Call to update iframe height after calculation
     });
 
     function addResistorField(resistorNumber) {
@@ -106,23 +110,19 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteButton.addEventListener('click', () => {
                 resistorInputsDiv.removeChild(resistorDiv);
                 resistorCount--;
+                updateIframeHeight();  // Call to update iframe height after removing resistor
             });
         }
 
         resistorDiv.appendChild(input);
         resistorDiv.appendChild(deleteButton);
         resistorInputsDiv.appendChild(resistorDiv);
+
+        updateIframeHeight();  // Call to update iframe height after adding a resistor
     }
 
-    function sendHeight() {
-        const height = document.body.scrollHeight;
-        // Send the height to the parent page
-        window.parent.postMessage({ height: height }, '*');
-      }
-    
-      // Call sendHeight when the content is loaded
-      window.onload = sendHeight;
-    
-      // Optionally, call sendHeight when content changes dynamically (e.g., form input changes)
-      window.addEventListener('resize', sendHeight);
+    function updateIframeHeight() {
+        // Send the height of the iframe content to the parent page
+        window.parent.postMessage({ height: document.body.scrollHeight }, 'https://kobee.com.au');
+    }
 });

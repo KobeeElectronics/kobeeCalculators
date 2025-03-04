@@ -184,6 +184,6 @@ p {
 
     /* Stack the columns on mobile */
     #resistor-inputs {
-        grid-template-columns: 1fr; /* Stack the fields in one column on mobile */
+        grid-template-columns: 1fr 1fr; /* Stack the fields in one column on mobile */
     }
 }

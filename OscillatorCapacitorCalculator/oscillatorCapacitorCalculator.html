@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscillator Capacitor Calculator</title>
+    <link rel="stylesheet" href="oscillatorCapacitorCalculator.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="inputs-container">
+            <div class="input-group">
+                <label for="cl">Load Capacitance (CL):</label>
+                <div class="input-with-unit">
+                    <input type="number" id="cl" min="0" step="any" placeholder="Enter CL">
+                    <select id="cl-unit">
+                        <option value="pF">pF</option>
+                        <option value="nF">nF</option>
+                        <option value="µF">µF</option>
+                        <option value="mF">mF</option>
+                        <option value="F">F</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="cstray">Stray Capacitance (Cstray):</label>
+                <div class="input-with-unit">
+                    <input type="number" id="cstray" min="0" step="any" placeholder="Enter Cstray">
+                    <select id="cstray-unit">
+                        <option value="pF">pF</option>
+                        <option value="nF">nF</option>
+                        <option value="µF">µF</option>
+                        <option value="mF">mF</option>
+                        <option value="F">F</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="result">
+            <h2>Result:</h2>
+            <p id="result-value"></p>
+        </div>
+    </div>
+    <script src="oscillatorCapacitorCalculator.js"></script>
+</body>
+</html> 

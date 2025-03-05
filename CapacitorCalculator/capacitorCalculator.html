@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Write your comments here <title>Capacitor Network Calculator</title> -->
+    <link rel="stylesheet" href="capacitorCalculator.css">
+</head>
+<body>
+    <div class="calculator">
+        <!-- Write your comments here <h1>Capacitor Network Calculator</h1> -->
+        <div class="mode-selection">
+            <label for="mode">Select Mode:</label>
+            <select id="mode">
+                <option value="series">Series</option>
+                <option value="parallel">Parallel</option>
+            </select>
+        </div>
+        <div class="unit-selection">
+            <label for="unit">Select Unit:</label>
+            <select id="unit">
+                <option value="pf">Picofarad (pF)</option>
+                <option value="nf">Nanofarad (nF)</option>
+                <option value="uf">Microfarad (µF)</option>
+                <option value="mf">Millifarad (mF)</option>
+                <option value="f">Farad (F)</option>
+            </select>
+        </div>
+        <div id="capacitor-inputs">
+            <!-- Capacitor input fields will be generated here by JavaScript -->
+        </div>
+        <div class="button-container">
+            <button id="add-capacitor">Add Capacitor</button>
+            <button id="remove-capacitor">Remove Capacitor</button>
+        </div>
+        <div class="result">
+            <h2>Result:</h2>
+            <p id="result-value"></p>
+        </div>
+    </div>
+
+    <div class="sideBanner">
+        <div class="sideBannerBox">
+            <p style="font-size:large" id="configHeading">Series Capacitor</p>
+            <img id="headerImage" src="Images/Capacitors-In-Series.svg" width="50%" />
+        </div>
+        <div class="sideBannerBox">
+            <p>Applicable Calculation found below. Click the link to learn more about series and parallel capacitors</p>
+            <img id="calculationImage" src="Images/Series-Capacitor-Equation.svg" width="50%" />
+            <br>
+            <a href="https://kobee.com.au/blogs/calculators" class="learnButtons" target="_blank">Other Calculators &#8594;</a>
+        </div>
+    </div>
+
+    <script src="capacitorCalculator.js"></script>
+</body>
+</html> 

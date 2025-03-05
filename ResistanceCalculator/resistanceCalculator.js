@@ -155,6 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateIframeHeight() {
-        window.parent.postMessage({ height: document.body.scrollHeight }, 'https://kobee.com.au');
+        // Send the height to any parent window
+        const height = document.body.scrollHeight;
+        window.parent.postMessage({ type: 'resize', height: height }, 'https://kobee.com.au');
+        window.parent.postMessage({ type: 'resize', height: height }, 'https://www.kobee.com.au');
     }
 });

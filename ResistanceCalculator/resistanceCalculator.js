@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hasEmptyInputs = true;
             } else {
                 const numValue = parseFloat(value);
-                if (isNaN(numValue) || numValue <= 0) {
+                if (isNaN(numValue) || numValue === 0) {
                     input.style.border = '2px solid red';
                     valid = false;
                 } else {
@@ -139,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const input = document.createElement('input');
         input.type = 'number';
+        input.min = '0';
+        input.step = 'any';
         const unit = unitSelect.value;
         const unitSymbol = unit === 'ohm' ? 'Ω' : unit === 'kohm' ? 'kΩ' : 'MΩ';
         input.placeholder = `Resistor ${resistorNumber} (${unitSymbol})`;

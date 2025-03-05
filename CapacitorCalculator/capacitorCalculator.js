@@ -168,9 +168,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateIframeHeight() {
+        // Get the maximum height between scroll height and offset height
+        const height = Math.max(
+            document.body.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.scrollHeight,
+            document.documentElement.offsetHeight
+        );
+        
         // Send the height to any parent window
-        const height = document.body.scrollHeight;
-        window.parent.postMessage({ type: 'resize', height: height }, 'https://kobee.com.au');
-        window.parent.postMessage({ type: 'resize', height: height }, 'https://www.kobee.com.au');
+        window.parent.postMessage({ type: 'resize', height: height }, '*');
     }
 }); 

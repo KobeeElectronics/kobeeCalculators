@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             calculationImage.src = 'Images/Parallel-Resistor-Equation.svg';
         }
         calculateResult();
-        updateIframeHeight();
     });
 
     addResistorButton.addEventListener('click', () => {
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             resistorInputsDiv.removeChild(lastResistor);
             resistorCount--;
             calculateResult();
-            updateIframeHeight();
         }
     });
 
@@ -130,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         resultValue.textContent = `Total Resistance: ${convertedResult.toFixed(4)} ${unitSymbol}`;
-        updateIframeHeight();
     }
 
     function addResistorField(resistorNumber) {
@@ -150,20 +147,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resistorDiv.appendChild(input);
         resistorInputsDiv.appendChild(resistorDiv);
-
-        updateIframeHeight();
-    }
-
-    function updateIframeHeight() {
-        // Get the maximum height between scroll height and offset height
-        const height = Math.max(
-            document.body.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.scrollHeight,
-            document.documentElement.offsetHeight
-        );
-        
-        // Send the height to any parent window
-        window.parent.postMessage({ type: 'resize', height: height }, '*');
     }
 });

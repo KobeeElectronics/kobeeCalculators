@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
             calculationImage.src = 'Images/Parallel-Capacitor-Equation.svg';
         }
         calculateResult();
-        updateIframeHeight();
     });
 
     addCapacitorButton.addEventListener('click', () => {
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
             capacitorInputsDiv.removeChild(lastCapacitor);
             capacitorCount--;
             calculateResult();
-            updateIframeHeight();
         }
     });
 
@@ -143,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         resultValue.textContent = `Total Capacitance: ${convertedResult.toFixed(4)} ${unitSymbol}`;
-        updateIframeHeight();
     }
 
     function addCapacitorField(capacitorNumber) {
@@ -163,20 +160,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         capacitorDiv.appendChild(input);
         capacitorInputsDiv.appendChild(capacitorDiv);
-
-        updateIframeHeight();
-    }
-
-    function updateIframeHeight() {
-        // Get the maximum height between scroll height and offset height
-        const height = Math.max(
-            document.body.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.scrollHeight,
-            document.documentElement.offsetHeight
-        );
-        
-        // Send the height to any parent window
-        window.parent.postMessage({ type: 'resize', height: height }, '*');
     }
 }); 

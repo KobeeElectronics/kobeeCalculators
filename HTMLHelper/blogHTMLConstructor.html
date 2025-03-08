@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ko-Bee HTML Constructor</title>
+    <link href="blogHTMLConstructor.css" rel="stylesheet" />
+    <link href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css" rel="stylesheet" />
+    <script src="blogHTMLConstructor.js" defer></script>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script src="clipboard.min.js"></script>
+</head>
+<body>
+    <div class="section over-hide z-bigger">
+		<div class="background-color"></div>
+		<div class="section over-hide z-bigger">
+			<div class="container pb-5">
+				<div class="row justify-content-center pb-5">
+					<div class="col-12 pt-5">
+						<p class="mb-4 pb-2">SECTION</p>
+					</div>
+					<div class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" name="tools" id="tool-1" checked>
+						<label class="for-checkbox-tools" for="tool-1">
+							<i class='uil uil-focus'></i>
+							Icon Focus
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="tools" id="tool-2">
+						<label class="for-checkbox-tools" for="tool-2">
+							<i class='uil uil-compress-arrows'></i>
+							Button
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="tools" id="tool-3">
+						<label class="for-checkbox-tools" for="tool-3">
+							<i class='uil uil-link'></i>
+							Link
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="tools" id="tool-4">
+						<label class="for-checkbox-tools" for="tool-4">
+							<i class='uil uil-newspaper'></i>
+							Newsletter
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="tools" id="tool-5">
+						<label class="for-checkbox-tools" for="tool-5">
+							<i class='uil uil-expand-right'></i>
+							iframe
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="tools" id="tool-6">
+						<label class="for-checkbox-tools" for="tool-6">
+							<i class='uil uil-image'></i>
+							image
+						</label>
+					</div>
+					<div id="fullContentsLabel" class="col-12 pt-1">
+						<p class="mb-4 pb-2">FULL OR CONTENTS PORTION ONLY?</p>
+					</div>
+					<div id="fullContentsButton" class="col-xl-10 pb-5">
+						<input class="checkbox-budget" type="radio" name="budget" id="budget-1" checked>
+						<label class="for-checkbox-budget" for="budget-1">
+							<span data-hover="FULL">FULL</span>
+						</label><!--
+						--><input class="checkbox-budget" type="radio" name="budget" id="budget-2">
+						<label class="for-checkbox-budget" for="budget-2">							
+							<span data-hover="CONTENTS">CONTENTS</span>
+						</label>
+                    </div>
+                    <div id="iconLabelID" class="col-12 pt-5">
+						<p class="mb-4 pb-2">Icon</p>
+					</div>
+					<div id="iconButtonID" class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" name="icon" id="icon-1" checked>
+						<label class="for-checkbox-tools" for="icon-1">
+							<i class='uil uil-info-circle'></i>
+							info
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="icon" id="icon-2">
+						<label class="for-checkbox-tools" for="icon-2">
+							<i class='uil uil-sigma'></i>
+							equation
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="icon" id="icon-3">
+						<label class="for-checkbox-tools" for="icon-3">
+							<i class='uil uil-presentation-edit'></i>
+							example
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="icon" id="icon-4">
+						<label class="for-checkbox-tools" for="icon-4">
+							<i class='uil uil-book-medical'></i>
+							More
+						</label><!--
+						--><input class="checkbox-tools" type="radio" name="icon" id="icon-5">
+						<label class="for-checkbox-tools" for="icon-5">
+							<i class='uil uil-exclamation-triangle'></i>
+							Warning
+						</label>
+                    </div>
+                    <div id="imageOrTextClass" class="col-12 pt-1">
+						<p class="mb-4 pb-2">Image or text?</p>
+					</div>
+					<div  id="imageOrTextButtonClass" class="col-xl-10 pb-5">
+                        <input onclick="document.getElementById('linkInputID').style.display='none',
+                        document.getElementById('textInputID').style.display='none',
+                        document.getElementById('inputHeader').innerText = 'Link Input',
+                        document.getElementById('linkInputID1').style.display='none',
+                        document.getElementById('fileLocationTypeNo').style.display='block',
+                        document.getElementById('fileNameConstructor').style.display='block'" class="checkbox-budget" type="radio" name="content" id="content-1" checked>
+						<label class="for-checkbox-budget" for="content-1">
+							<span data-hover="image">image</span>
+						</label><!--
+						--><input onclick="document.getElementById('linkInputID').style.display='block',
+                        document.getElementById('textInputID').style.display='none',
+                        document.getElementById('linkInputID1').style.display='block',
+                        document.getElementById('inputHeader').innerText = 'Text Input'
+                        document.getElementById('fileLocationTypeNo').style.display='none',
+                        document.getElementById('fileNameConstructor').style.display='none'" class="checkbox-budget" type="radio" name="content" id="content-2">
+						<label class="for-checkbox-budget" for="content-2">							
+							<span data-hover="text">text</span>
+						</label>
+                    </div>
+                    <div id="fileLocationTypeNo" class="col-12 pb-5">
+						<input onclick="document.getElementById('fileNameConstructor').style.display='block',
+                        document.getElementById('linkInputID1').style.display='none',
+                        document.getElementById('textInputID').style.display='none'" class="checkbox-tools" type="radio" name="imageString" id="imageString1" checked>
+						<label class="for-checkbox-tools" for="imageString1">
+							<i class='uil uil-folder'></i>
+							File Name
+						</label><!--
+                        --><input onclick="document.getElementById('fileNameConstructor').style.display='none',
+                        document.getElementById('linkInputID1').style.display='block',
+                        document.getElementById('textInputID').style.display='block'" class="checkbox-tools" type="radio" name="imageString" id="imageString2">
+						<label class="for-checkbox-tools" for="imageString2">
+							<i class='uil uil-link'></i>
+							Link
+						</label>
+                    </div>
+                    <div? id="fileNameConstructor" class="col-12 pb-5">
+                        <select id="fileDirectoryName" , name="noOfResistors" class="selectInputStyle" placeholder="enter Value" >
+                            <option value="0">Equations</option>
+                            <option value="1">Images</option>
+                        </select>
+                    </div>
+                    <div id="fileNameInDiv">
+                        <textarea class="textAreaStyle" id="fileNameIn" name="imageIn" rows="1" cols="60"></textarea>
+                    </div>
+                    <div hidden id="linkInputID1" class="col-12 pt-1">
+						<p id="inputHeader" class="mb-4 pb-2">Link Input</p>
+                    </div>
+                    <div  hidden id="textInputID" class="col-xl-10 pb-5">
+                        <textarea class="textAreaStyle" id="imageIn" name="imageIn" rows="2" cols="40"></textarea>
+                    </div>
+                    
+                    <div hidden id="linkInputID" class="col-xl-10 pb-5">
+                        <textarea class="textAreaStyle" id="textIn" name="textIn" rows="5" cols="40"></textarea>
+                    </div>
+                    <div hidden id="openInTabHeader" class="col-12 pt-1">
+						<p  class="mb-4 pb-2">Open In Seperate Tab?</p>
+                    </div>
+                    <div hidden id="yesNoRadio" class="col-12 pb-5">
+						<input class="checkbox-tools" type="radio" name="openInNew" id="yesyes" checked>
+						<label class="for-checkbox-tools" for="yesyes">
+							<i class='uil uil-check'></i>
+							Yes
+						</label><!--
+                        --><input class="checkbox-tools" type="radio" name="openInNew" id="nono">
+						<label class="for-checkbox-tools" for="nono">
+							<i class='uil uil-multiply'></i>
+							NO
+						</label>
+                    </div>
+
+                    <div hidden id="ButtonLabelTitle" class="col-12 pt-1">
+						<p class="mb-4 pb-2">Text</p>
+                    </div>
+                    <div hidden id="ButtonLabelInput" class="col-xl-10 pb-5">
+                        <textarea class="textAreaStyle" id="buttonLabelIn" buttonLabelIn="buttonLabelIn" rows="1" cols="70"></textarea>
+                    </div>
+
+                    <div hidden id="ButtonLinkTitle"class="col-12 pt-1">
+						<p class="mb-4 pb-2">Link</p>
+                    </div>
+                    <div hidden id="ButtonLinkInput" class="col-xl-10 pb-5">
+                        <textarea class="textAreaStyle" id="buttonLinkIn" name="buttonLinkIn" rows=2" cols="70"></textarea>
+                    </div>
+
+                    <div class="col-xl-10 pb-5">
+                        <button type="button" id="goButtonID" class="copyButton">GO</button>
+                    </div>
+                    <div class="col-12 pt-1">
+						<p class="mb-4 pb-2">Output</p>
+                    </div>
+                    <div class="col-xl-10 pb-5">
+                        <textarea class="textAreaStyle" id="resultsOuts" name="resultOuts" rows="6" cols="100"></textarea>
+                    </div>
+                    <div class="col-xl-10 pb-5">
+                        <button type="button" id="copyButtonID" class="copyButton" data-clipboard-target="#resultsOuts">COPY</button>
+                        <button type="button" id="resetButtonID" class="copyButton">RESET</>
+                    </div>
+                    
+				</div>
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

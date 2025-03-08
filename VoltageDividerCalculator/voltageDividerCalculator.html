@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltage Divider Calculator</title>
+    <link rel="stylesheet" href="voltageDividerCalculator.css">
+</head>
+<body>
+    <div class="calculator">
+        <h1>Voltage Divider Calculator</h1>
+        <div class="mode-selection">
+            <label for="mode">Select Mode:</label>
+            <select id="mode">
+                <option value="noLoad">No Load</option>
+                <option value="acrossLoad">Across Load</option>
+            </select>
+        </div>
+        <div class="unit-selection">
+            <label for="resistanceUnit">Resistance Unit:</label>
+            <select id="resistanceUnit">
+                <option value="ohm">Ohm (Ω)</option>
+                <option value="kohm">Kilo-ohm (kΩ)</option>
+                <option value="mohm">Mega-ohm (MΩ)</option>
+            </select>
+        </div>
+        <div id="calculator-inputs">
+            <div class="input-group">
+                <label for="inputVoltage">Input Voltage (V):</label>
+                <input type="number" id="inputVoltage" placeholder="Enter voltage">
+            </div>
+            <div class="input-group">
+                <label for="r1">R1 Value:</label>
+                <input type="number" id="r1" placeholder="Enter R1">
+            </div>
+            <div class="input-group">
+                <label for="r2">R2 Value:</label>
+                <input type="number" id="r2" placeholder="Enter R2">
+            </div>
+            <div class="input-group" id="loadResistanceGroup" style="display: none;">
+                <label for="loadResistance">Load Resistance:</label>
+                <input type="number" id="loadResistance" placeholder="Enter load resistance">
+            </div>
+        </div>
+        <div class="button-container">
+            <button id="calculate">Calculate</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div class="result">
+            <h2>Results:</h2>
+            <p id="outputVoltage"></p>
+            <p id="currentFlow"></p>
+            <p id="powerDissipation"></p>
+        </div>
+    </div>
+
+    <div class="sideBanner">
+        <div class="sideBannerBox">
+            <p style="font-size:large" id="configHeading">Voltage Divider</p>
+            <img id="headerImage" src="Images/voltage-divider-no-load.svg" width="50%" />
+        </div>
+        <div class="sideBannerBox">
+            <p>Applicable Calculation found below. Click the link to learn more about voltage dividers</p>
+            <img id="calculationImage" src="Images/voltage-divider-equation.svg" width="50%" />
+            <br>
+            <a href="https://kobee.com.au/blogs/calculators" class="learnButtons" target="_blank">Other Calculators &#8594;</a>
+        </div>
+    </div>
+
+    <script src="voltageDividerCalculator.js"></script>
+</body>
+</html> 

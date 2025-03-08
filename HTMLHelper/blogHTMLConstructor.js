@@ -195,7 +195,8 @@ function generateIconOutput(state) {
             if (iconType.more) boxClass = 'furtherLearningBox';
             if (iconType.warning) boxClass = 'warningBox';
 
-            return `<div class="${boxClass}"><div class="${boxClass}Heading">${userHeadingInput}</div>${userTextInput}</div>`;
+            const headingDiv = userHeadingInput.trim() ? `<div class="${boxClass}Heading">${userHeadingInput}</div>` : '';
+            return `<div class="${boxClass}">${headingDiv}${userTextInput}</div>`;
         }
     } else {
         // Contents only case

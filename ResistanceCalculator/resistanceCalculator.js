@@ -153,11 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (unit === 'mohm') {
             displayValue = result / 1000000;
             displayUnit = 'MΩ';
-        } else if (unit === 'kohm' && result < 1000) {
-            displayValue = result;
+        } else if (unit === 'kohm' && result < 1000000) {
+            displayValue = result / 1000;
             displayUnit = 'kΩ';
         } else if (unit === 'kohm') {
-            displayValue = result / 1000;
+            displayValue = result / 1000000;
             displayUnit = 'MΩ';
         } else if (unit === 'ohm' && result >= 1000000) {
             displayValue = result / 1000000;

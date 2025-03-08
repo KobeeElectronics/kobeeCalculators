@@ -162,39 +162,61 @@ document.addEventListener('DOMContentLoaded', () => {
         let displayValue, displayUnit;
         
         // Convert to appropriate unit for display
-        if (result >= 1 && unit === 'pf') {
-            displayValue = result / 1000;
+        if (unit === 'pf') {
+            displayValue = result * 1e12;  // Convert from F to pF
+            displayUnit = 'pF';
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'nF';
+            }
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'µF';
+            }
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'mF';
+            }
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'F';
+            }
+        } else if (unit === 'nf') {
+            displayValue = result * 1e9;  // Convert from F to nF
             displayUnit = 'nF';
-        } else if (result >= 1000 && unit === 'pf') {
-            displayValue = result / 1000000;
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'µF';
+            }
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'mF';
+            }
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'F';
+            }
+        } else if (unit === 'uf') {
+            displayValue = result * 1e6;  // Convert from F to µF
             displayUnit = 'µF';
-        } else if (result >= 1000000 && unit === 'pf') {
-            displayValue = result / 1000000000;
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'mF';
+            }
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'F';
+            }
+        } else if (unit === 'mf') {
+            displayValue = result * 1e3;  // Convert from F to mF
             displayUnit = 'mF';
-        } else if (result >= 1000000000 && unit === 'pf') {
-            displayValue = result / 1000000000000;
-            displayUnit = 'F';
-        } else if (result >= 1 && unit === 'nf') {
-            displayValue = result / 1000;
-            displayUnit = 'µF';
-        } else if (result >= 1000 && unit === 'nf') {
-            displayValue = result / 1000000;
-            displayUnit = 'mF';
-        } else if (result >= 1000000 && unit === 'nf') {
-            displayValue = result / 1000000000;
-            displayUnit = 'F';
-        } else if (result >= 1 && unit === 'uf') {
-            displayValue = result / 1000;
-            displayUnit = 'mF';
-        } else if (result >= 1000 && unit === 'uf') {
-            displayValue = result / 1000000;
-            displayUnit = 'F';
-        } else if (result >= 1 && unit === 'mf') {
-            displayValue = result / 1000;
-            displayUnit = 'F';
+            if (displayValue >= 1000) {
+                displayValue /= 1000;
+                displayUnit = 'F';
+            }
         } else {
             displayValue = result;
-            displayUnit = unit === 'pf' ? 'pF' : unit === 'nf' ? 'nF' : unit === 'uf' ? 'µF' : unit === 'mf' ? 'mF' : 'F';
+            displayUnit = 'F';
         }
         
         resultValue.textContent = `${Number(displayValue.toFixed(3))} ${displayUnit}`;

@@ -128,19 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
             result = capacitors.reduce((acc, curr) => acc + curr, 0);
         }
 
-        // Convert result to appropriate unit
-        const selectedUnit = unitSelect.value;
-        let convertedResult = result;
-        let unitSymbol = getUnitSymbol(selectedUnit);
-
-        switch(selectedUnit) {
-            case 'pf': convertedResult = result * 1e12; break;
-            case 'nf': convertedResult = result * 1e9; break;
-            case 'uf': convertedResult = result * 1e6; break;
-            case 'mf': convertedResult = result * 1e3; break;
-        }
-
-        resultValue.textContent = `Total Capacitance: ${convertedResult.toFixed(4)} ${unitSymbol}`;
+        // Update result display
+        updateResult(result);
     }
 
     function addCapacitorField(capacitorNumber) {
@@ -160,5 +149,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
         capacitorDiv.appendChild(input);
         capacitorInputsDiv.appendChild(capacitorDiv);
+    }
+
+    // Update result display
+    function updateResult(result) {
+        if (result === null || isNaN(result)) {
+            resultValue.textContent = '';
+            return;
+        }
+        
+        const unit = document.getElementById('unit').value;
+        let displayValue, displayUnit;
+        
+        // Convert to appropriate unit for display
+        if (result >= 1 && unit === 'pf') {
+            displayValue = result / 1000;
+            displayUnit = 'nF';
+        } else if (result >= 1000 && unit === 'pf') {
+            displayValue = result / 1000000;
+            displayUnit = 'µF';
+        } else if (result >= 1000000 && unit === 'pf') {
+            displayValue = result / 1000000000;
+            displayUnit = 'mF';
+        } else if (result >= 1000000000 && unit === 'pf') {
+            displayValue = result / 1000000000000;
+            displayUnit = 'F';
+        } else if (result >= 1 && unit === 'nf') {
+            displayValue = result / 1000;
+            displayUnit = 'µF';
+        } else if (result >= 1000 && unit === 'nf') {
+            displayValue = result / 1000000;
+            displayUnit = 'mF';
+        } else if (result >= 1000000 && unit === 'nf') {
+            displayValue = result / 1000000000;
+            displayUnit = 'F';
+        } else if (result >= 1 && unit === 'uf') {
+            displayValue = result / 1000;
+            displayUnit = 'mF';
+        } else if (result >= 1000 && unit === 'uf') {
+            displayValue = result / 1000000;
+            displayUnit = 'F';
+        } else if (result >= 1 && unit === 'mf') {
+            displayValue = result / 1000;
+            displayUnit = 'F';
+        } else {
+            displayValue = result;
+            displayUnit = unit === 'pf' ? 'pF' : unit === 'nf' ? 'nF' : unit === 'uf' ? 'µF' : unit === 'mf' ? 'mF' : 'F';
+        }
+        
+        resultValue.textContent = `${Number(displayValue.toFixed(3))} ${displayUnit}`;
     }
 }); 

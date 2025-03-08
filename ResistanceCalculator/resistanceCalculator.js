@@ -114,20 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
             result = 1 / resistors.reduce((acc, curr) => acc + (1 / curr), 0);
         }
 
-        // Unit conversion logic for output
-        const selectedUnit = unitSelect.value;
-        let convertedResult = result;
-        let unitSymbol = 'Ω';
-
-        if (selectedUnit === 'kohm') {
-            convertedResult = result / 1000;
-            unitSymbol = 'kΩ';
-        } else if (selectedUnit === 'mohm') {
-            convertedResult = result / 1000000;
-            unitSymbol = 'MΩ';
-        }
-
-        resultValue.textContent = `Total Resistance: ${convertedResult.toFixed(4)} ${unitSymbol}`;
+        // Update result display
+        updateResult(result);
     }
 
     function addResistorField(resistorNumber) {
@@ -147,5 +135,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resistorDiv.appendChild(input);
         resistorInputsDiv.appendChild(resistorDiv);
+    }
+
+    // Update result display
+    function updateResult(result) {
+        if (result === null || isNaN(result)) {
+            resultValue.textContent = '';
+            return;
+        }
+        
+        const unit = document.getElementById('unit').value;
+        let displayValue, displayUnit;
+        
+        if (unit === 'mohm' && result < 1000000) {
+            displayValue = result / 1000;
+            displayUnit = 'kΩ';
+        } else if (unit === 'mohm') {
+            displayValue = result / 1000000;
+            displayUnit = 'MΩ';
+        } else if (unit === 'kohm' && result < 1000) {
+            displayValue = result;
+            displayUnit = 'kΩ';
+        } else if (unit === 'kohm') {
+            displayValue = result / 1000;
+            displayUnit = 'MΩ';
+        } else if (unit === 'ohm' && result >= 1000000) {
+            displayValue = result / 1000000;
+            displayUnit = 'MΩ';
+        } else if (unit === 'ohm' && result >= 1000) {
+            displayValue = result / 1000;
+            displayUnit = 'kΩ';
+        } else {
+            displayValue = result;
+            displayUnit = 'Ω';
+        }
+        
+        resultValue.textContent = `${Number(displayValue.toFixed(3))} ${displayUnit}`;
     }
 });

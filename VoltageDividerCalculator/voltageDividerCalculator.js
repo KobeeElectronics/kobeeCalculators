@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
     modeSelect.addEventListener('change', function() {
         if (this.value === 'noLoad') {
             loadResistanceGroup.style.display = 'none';
-            headerImage.src = 'images/No-Load-Voltage-Divider.svg';
-            calculationImage.src = 'images/No-Load-Voltage-Divider-Equation.svg';
+            headerImage.src = 'Images/No-Load-Voltage-Divider.svg';
+            calculationImage.src = 'Images/No-Load-Voltage-Divider-Equation.svg';
             configHeading.textContent = 'Voltage Divider (No Load)';
             outputVoltage.querySelector('.label').textContent = 'Output Voltage (across R2)';
             currentFlow.querySelector('.label').textContent = 'Current (through R2)';
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
             powerPercentage.style.display = 'none';
         } else {
             loadResistanceGroup.style.display = 'block';
-            headerImage.src = 'images/Load-Voltage-Divider.svg';
-            calculationImage.src = 'images/Load-Voltage-Divider-Equation.svg';
+            headerImage.src = 'Images/Load-Voltage-Divider.svg';
+            calculationImage.src = 'Images/Load-Voltage-Divider-Equation.svg';
             configHeading.textContent = 'Voltage Divider (Across Load)';
             outputVoltage.querySelector('.label').textContent = 'Output Voltage (across Load)';
             currentFlow.querySelector('.label').textContent = 'Current (through Load)';

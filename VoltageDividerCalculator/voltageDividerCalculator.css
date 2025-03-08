@@ -1,8 +1,13 @@
+/* Add box-sizing to all elements */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: flex-start;
     background-color: #f4f4f4;
     margin: 0;
     padding: 10px;
@@ -29,7 +34,7 @@ body {
 }
 
 .sideBannerBox {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     padding: 15px;
 }
 
@@ -37,6 +42,14 @@ body {
     display: block;
     margin: 0 auto;
     max-width: 100%;
+}
+
+.sideBannerBox:first-child img {
+    width: 90%;
+}
+
+.sideBannerBox:last-child img {
+    width: 35%;
 }
 
 .learnButtons {
@@ -63,22 +76,38 @@ body {
 }
 
 h1, .mode-selection, .result {
-    margin-bottom: 20px;
-    margin-top: 20px;
 }
 
-.mode-selection select, .unit-selection select {
-    width: 70%;
+.mode-selection {
+    text-align: left;
+    margin: 15px 0;
+    padding: 0 20px;
+}
+
+.mode-selection label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.mode-selection select {
+    width: 100%;
     padding: 10px;
     font-size: 16px;
     border-radius: 8px;
     border: 1px solid #ccc;
     color: #000;
-    margin: 10px 0;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 15px 0;
 }
 
 .input-group {
-    margin: 15px 0;
+    margin: 0;
     text-align: left;
 }
 
@@ -116,18 +145,81 @@ button:hover {
     text-align: left;
     padding: 15px;
     background-color: #f8f8f8;
-    border-radius: 4px;
+    border-radius: 8px;
     margin-top: 20px;
 }
 
 .result h2 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: center;
+    color: #333;
 }
 
-.result p {
-    margin: 5px 0;
-    font-size: 16px;
+.result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.result-card {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.result-card .label {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.result-card .value {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 500;
+}
+
+#outputVoltage {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#currentFlow {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#powerDissipation {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#powerPercentage {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#powerPercentage.result-card {
+    background: white;
+    color: #333;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#powerPercentage.result-card .label {
+    color: #666;
+}
+
+#powerPercentage.result-card .value {
+    color: #333;
+    font-weight: 500;
 }
 
 /* Responsive Design */
@@ -139,17 +231,38 @@ button:hover {
     }
 
     .calculator, .sideBanner {
-        width: 95%;
+        width: calc(100% - 30px);
         max-width: none;
         margin: 10px 0;
+    }
+
+    .calculator {
+        padding: 20px;
     }
 
     .sideBanner {
         margin-left: 0;
     }
 
-    .sideBannerBox img {
-        width: 80%;
+    .sideBannerBox {
+        margin-bottom: 0;
+        padding: 10px;
+    }
+
+    .sideBannerBox:first-child {
+        padding-bottom: 0;
+    }
+
+    .sideBannerBox:first-child img {
+        width: 70%;
+    }
+
+    .sideBannerBox:last-child {
+        padding-top: 5px;
+    }
+
+    .sideBannerBox:last-child img {
+        width: 35%;
     }
 
     .button-container {
@@ -159,5 +272,9 @@ button:hover {
 
     button {
         width: 100%;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;  /* Stack cards in single column on mobile */
     }
 } 

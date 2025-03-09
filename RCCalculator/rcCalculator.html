@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Circuit Calculator</title>
+    <link rel="stylesheet" href="rcCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <div class="mode-selection">
+                    <label for="mode">Select Mode</label>
+                    <select id="mode">
+                        <option value="charging">Charging</option>
+                        <option value="discharging">Discharging</option>
+                    </select>
+                </div>
+                <div class="input-grid">
+                    <div class="input-field">
+                        <label for="inputVoltage">Supply Voltage</label>
+                        <input type="number" id="inputVoltage" placeholder="V" step="any">
+                    </div>
+                    <div class="input-field resistance-group">
+                        <label for="resistance">Resistance</label>
+                        <div class="input-unit-group">
+                            <input type="number" id="resistance" placeholder="Value" step="any">
+                            <select id="resistanceUnit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field capacitance-group">
+                        <label for="capacitance">Capacitance</label>
+                        <div class="input-unit-group">
+                            <input type="number" id="capacitance" placeholder="Value" step="any">
+                            <select id="capacitanceUnit">
+                                <option value="0.001">nF</option>
+                                <option value="1" selected>µF</option>
+                                <option value="1000">mF</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+                <div class="result">
+                    <div class="result-grid">
+                        <div class="result-card" id="timeConstant">
+                            <div class="label">Time Constant (τ)</div>
+                            <div class="value">0 ms</div>
+                        </div>
+                        <div class="result-card" id="energy">
+                            <div class="label">Energy (E)</div>
+                            <div class="value">0 µJ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <div class="graph-container">
+                    <h3>Voltage and Current vs Time</h3>
+                    <canvas id="rcGraph"></canvas>
+                    <div class="graph-legend">
+                        <div class="legend-item">
+                            <span class="legend-color voltage-color"></span>
+                            <span>Voltage</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color current-color"></span>
+                            <span>Current</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="rcCalculator.js"></script>
+</body>
+</html> 

@@ -1,288 +1,282 @@
 /* Add box-sizing to all elements */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 10px;
-    overflow-y: auto;
-}
-
-.calculator {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    margin-bottom: 20px;
+    align-items: center;
     padding: 20px;
 }
 
-.sideBanner {
-    margin-left: 20px;
-    max-width: 400px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    padding-top: 0px
-}
-
-.sideBannerBox {
-    margin-bottom: 5px;
-    padding: 15px;
-}
-
-.sideBannerBox img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-}
-
-.sideBannerBox:first-child img {
-    width: 90%;
-}
-
-.sideBannerBox:last-child img {
-    width: 35%;
-}
-
-.learnButtons {
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    padding: 10px;
-    background-color: #fed700;
-    color: #000;
-    text-decoration: none;
-    border-radius: 4px;
-    width: fit-content;
-}
-
-.button-container {
+.container {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
+    max-width: 1000px;
     width: 100%;
-    margin: 20px 0;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
 }
 
-.learnButtons:hover {
-    background-color: #ffe240;
-}
-
-h1, .mode-selection, .result {
-}
-
-.mode-selection {
-    text-align: left;
-    margin: 15px 0;
-    padding: 0 20px;
-}
-
-.mode-selection label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.mode-selection select {
-    width: 100%;
+.calculator-panel {
+    flex: 1;
     padding: 10px;
-    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+}
+
+.formula-panel {
+    flex: 1;
+    padding: 10px;
+    border-left: 2px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50%;
+}
+
+.formula-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.config-image,
+.formula-image {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.config-image img,
+.formula-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 5px 0;
+}
+
+h3 {
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.input-group {
+    display: grid;
+    gap: 15px;
+    height: 100%;
+}
+
+.mode-selection,
+.unit-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
     border-radius: 8px;
-    border: 1px solid #ccc;
-    color: #000;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+select:focus {
+    outline: none;
+    border-color: #FED700;
+    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
 }
 
 .input-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin: 15px 0;
+    gap: 10px;
+    margin: 10px 0;
 }
 
-.input-group {
-    margin: 0;
-    text-align: left;
+.input-field {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 0 5px;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.input-field input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
     font-size: 16px;
+    transition: all 0.3s;
+    min-width: 0;
+    margin: 2px;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: #FED700;
+    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
+    margin: 2px;
+}
+
+.input-field input.has-value {
+    border-color: #FED700;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
 }
 
 button {
-    width: 48%;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: #fed700;
+    padding: 8px 100px;
     border: none;
-    color: #000;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    background-color: #4CAF50;
+    color: white;
 }
 
 button:hover {
-    background-color: #ffe240;
+    transform: translateY(-2px);
+}
+
+#reset {
+    background-color: #f44336;
 }
 
 .result {
-    text-align: left;
-    padding: 15px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.result h2 {
-    margin-bottom: 15px;
-    text-align: center;
-    color: #333;
+    margin-top: 15px;
 }
 
 .result-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    width: 100%;
 }
 
 .result-card {
-    background: white;
+    background-color: #f8f9fa;
+    padding: 10px;
     border-radius: 8px;
-    padding: 12px 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-}
-
-.result-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    border: 2px solid #e9ecef;
 }
 
 .result-card .label {
-    font-size: 0.9em;
-    color: #666;
-    margin-bottom: 4px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+    font-size: 13px;
 }
 
 .result-card .value {
-    font-size: 1.2em;
+    font-size: 20px;
     color: #333;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-#outputVoltage {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-#currentFlow {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-#powerDissipation {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-#powerPercentage {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-#powerPercentage.result-card {
-    background: white;
-    color: #333;
-    grid-column: 2;
-    grid-row: 2;
-}
-
-#powerPercentage.result-card .label {
-    color: #666;
-}
-
-#powerPercentage.result-card .value {
-    color: #333;
-    font-weight: 500;
-}
-
-#configHeading {
+.learn-more {
+    margin-top: 20px;
     text-align: center;
-    margin: 10px 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    body {
+.learn-button {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #fed700;
+    color: #555;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.learn-button:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .container {
         flex-direction: column;
-        align-items: center;
-        padding: 10px;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .calculator-panel,
+    .formula-panel {
+        max-width: 100%;
+        min-width: 100%;
     }
 
-    .calculator, .sideBanner {
-        width: calc(100% - 30px);
-        max-width: none;
-        margin: 10px 0;
+    .formula-panel {
+        border-left: none;
+        border-top: 2px solid #eee;
+        padding-top: 15px;
     }
 
-    .calculator {
-        padding: 20px;
+    .config-image img,
+    .formula-image img {
+        max-width: 100%;
     }
 
-    .sideBanner {
-        margin-left: 0;
-        padding: 20px;
+    .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
     }
 
-    .sideBannerBox {
-        margin-bottom: 0;
-        padding: 10px;
+    .result-card {
+        padding: 8px;
     }
 
-    .sideBannerBox:first-child {
-        padding-bottom: 0;
-    }
-
-    .sideBannerBox:first-child img {
-        width: 70%;
-    }
-
-    .sideBannerBox:last-child {
-        padding-top: 5px;
-    }
-
-    .sideBannerBox:last-child img {
-        width: 35%;
-    }
-
-    .button-container {
-        flex-direction: column;
-        gap: 10px;
+    .result-card .value {
+        font-size: 18px;
     }
 
     button {
         width: 100%;
     }
 
-    .result-grid {
-        grid-template-columns: 1fr;  /* Stack cards in single column on mobile */
+    .input-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin: 8px 0;
+    }
+
+    .input-field {
+        padding: 0;
+    }
+
+    .input-field input {
+        padding: 6px 10px;
+        font-size: 14px;
     }
 } 

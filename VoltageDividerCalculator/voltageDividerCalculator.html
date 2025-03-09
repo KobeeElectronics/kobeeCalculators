@@ -7,76 +7,70 @@
     <link rel="stylesheet" href="voltageDividerCalculator.css">
 </head>
 <body>
-    <div class="calculator">
-        <div class="mode-selection">
-            <label for="mode">Select Mode:</label>
-            <select id="mode">
-                <option value="noLoad">No Load</option>
-                <option value="acrossLoad">Across Load</option>
-            </select>
-        </div>
-        <div class="mode-selection">
-            <label for="resistanceUnit">Resistance Unit:</label>
-            <select id="resistanceUnit">
-                <option value="ohm">Ohm (Ω)</option>
-                <option value="kohm">Kilo-ohm (kΩ)</option>
-                <option value="mohm">Mega-ohm (MΩ)</option>
-            </select>
-        </div>
-        <div class="input-grid">
+    <div class="container">
+        <div class="calculator-panel">
             <div class="input-group">
-                <label for="inputVoltage">Input Voltage (V):</label>
-                <input type="number" min="0" id="inputVoltage" placeholder="Enter voltage">
-            </div>
-            <div class="input-group">
-                <label for="r1">R1 Value:</label>
-                <input type="number" min="0" id="r1" placeholder="Enter R1">
-            </div>
-            <div class="input-group">
-                <label for="r2">R2 Value:</label>
-                <input type="number" min="0" id="r2" placeholder="Enter R2">
-            </div>
-            <div class="input-group" id="loadResistanceGroup" style="display: none;">
-                <label for="loadResistance">Load (RL):</label>
-                <input type="number" min="0" id="loadResistance" placeholder="Load resistance">
+                <div class="mode-selection">
+                    <label for="mode">Select Mode</label>
+                    <select id="mode">
+                        <option value="noload">No Load</option>
+                        <option value="load">With Load</option>
+                    </select>
+                </div>
+                <div class="input-grid">
+                    <div class="input-field">
+                        <input type="number" id="inputVoltage" placeholder="Input Voltage (V)" step="any">
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="r1" placeholder="R1 (Ω)" step="any">
+                    </div>
+                    <div class="input-field">
+                        <input type="number" id="r2" placeholder="R2 (Ω)" step="any">
+                    </div>
+                    <div class="input-field" id="rloadField" style="display: none;">
+                        <input type="number" id="rload" placeholder="RLoad (Ω)" step="any">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+                <div class="result">
+                    <div class="result-grid">
+                        <div class="result-card" id="outputVoltage">
+                            <div class="label">Output Voltage</div>
+                            <div class="value">0 V</div>
+                        </div>
+                        <div class="result-card" id="currentFlow">
+                            <div class="label">Current Flow</div>
+                            <div class="value">0 mA</div>
+                        </div>
+                        <div class="result-card" id="powerDissipation">
+                            <div class="label">Power Dissipation</div>
+                            <div class="value">0 mW</div>
+                        </div>
+                        <div class="result-card" id="powerPercentage">
+                            <div class="label">Power Distribution</div>
+                            <div class="value">0%</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="result">
-            <h2>Results:</h2>
-            <div class="result-grid">
-                <div id="outputVoltage" class="result-card">
-                    <div class="label">Output Voltage (across R2)</div>
-                    <div class="value"></div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <div class="config-image">
+                    <h3 id="configHeading">Voltage Divider Configuration</h3>
+                    <img id="configImage" src="Images/Voltage-Divider-Circuit.svg" alt="Circuit Configuration" />
                 </div>
-                <div id="currentFlow" class="result-card">
-                    <div class="label">Current (through R2)</div>
-                    <div class="value"></div>
+                <div class="formula-image">
+                    <img id="formulaImage" src="Images/Voltage-Divider-Formula.svg" alt="Formula" />
                 </div>
-                <div id="powerDissipation" class="result-card">
-                    <div class="label">Power Dissipation (in R2)</div>
-                    <div class="value"></div>
-                </div>
-                <div id="powerPercentage" class="result-card" style="display: none;">
-                    <div class="label">Load Power Percentage</div>
-                    <div class="value"></div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="sideBanner">
-        <div class="sideBannerBox">
-            <p style="font-size:large" id="configHeading">Voltage Divider</p>
-            <img id="headerImage" src="Images/No-Load-Voltage-Divider.svg" />
-        </div>
-        <div class="sideBannerBox">
-            <p>Applicable Calculation found below. Click the link to learn more about voltage dividers</p>
-            <img id="calculationImage" src="Images/No-Load-Voltage-Divider-Equation.svg" />
-            <br>
-            <a href="https://kobee.com.au/blogs/calculators" class="learnButtons" target="_blank">Other Calculators &#8594;</a>
-        </div>
-    </div>
-
     <script src="voltageDividerCalculator.js"></script>
 </body>
 </html> 

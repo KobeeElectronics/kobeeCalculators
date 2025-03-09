@@ -1,178 +1,155 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Get DOM elements
     const modeSelect = document.getElementById('mode');
-    const resistanceUnitSelect = document.getElementById('resistanceUnit');
     const inputVoltage = document.getElementById('inputVoltage');
     const r1Input = document.getElementById('r1');
     const r2Input = document.getElementById('r2');
-    const loadResistanceGroup = document.getElementById('loadResistanceGroup');
-    const loadResistance = document.getElementById('loadResistance');
+    const rloadInput = document.getElementById('rload');
+    const rloadField = document.getElementById('rloadField');
+    const configImage = document.getElementById('configImage');
+    const formulaImage = document.getElementById('formulaImage');
+    const configHeading = document.getElementById('configHeading');
     const outputVoltage = document.getElementById('outputVoltage');
     const currentFlow = document.getElementById('currentFlow');
     const powerDissipation = document.getElementById('powerDissipation');
     const powerPercentage = document.getElementById('powerPercentage');
-    const headerImage = document.getElementById('headerImage');
-    const calculationImage = document.getElementById('calculationImage');
-    const configHeading = document.getElementById('configHeading');
+    const resetButton = document.getElementById('reset');
 
-    // Function to clear all inputs
+    // Function to clear all inputs and results
     function clearInputs() {
         inputVoltage.value = '';
         r1Input.value = '';
         r2Input.value = '';
-        loadResistance.value = '';
-        outputVoltage.querySelector('.value').textContent = '';
-        currentFlow.querySelector('.value').textContent = '';
-        powerDissipation.querySelector('.value').textContent = '';
-        powerPercentage.querySelector('.value').textContent = '';
+        rloadInput.value = '';
+        outputVoltage.querySelector('.value').textContent = '0 V';
+        currentFlow.querySelector('.value').textContent = '0 mA';
+        powerDissipation.querySelector('.value').textContent = '0 mW';
+        powerPercentage.querySelector('.value').textContent = '0%';
     }
 
     // Mode change handler
     modeSelect.addEventListener('change', function() {
-        if (this.value === 'noLoad') {
-            loadResistanceGroup.style.display = 'none';
-            headerImage.src = 'Images/No-Load-Voltage-Divider.svg';
-            calculationImage.src = 'Images/No-Load-Voltage-Divider-Equation.svg';
+        if (this.value === 'noload') {
             configHeading.textContent = 'Voltage Divider (No Load)';
-            outputVoltage.querySelector('.label').textContent = 'Output Voltage (across R2)';
-            currentFlow.querySelector('.label').textContent = 'Current (through R2)';
-            powerDissipation.querySelector('.label').textContent = 'Power Dissipation (in R2)';
-            powerPercentage.style.display = 'none';
+            configImage.src = 'Images/No-Load-Voltage-Divider.svg';
+            formulaImage.src = 'Images/No-Load-Voltage-Divider-Equation.svg';
+            rloadField.style.display = 'none';
+            // Update labels for no load mode
+            outputVoltage.querySelector('.label').textContent = 'Voltage Across R2';
+            currentFlow.querySelector('.label').textContent = 'Current Through R2';
+            powerDissipation.querySelector('.label').textContent = 'Power in R2';
+            powerPercentage.querySelector('.label').textContent = 'R2 Power %';
         } else {
-            loadResistanceGroup.style.display = 'block';
-            headerImage.src = 'Images/Load-Voltage-Divider.svg';
-            calculationImage.src = 'Images/Load-Voltage-Divider-Equation.svg';
-            configHeading.textContent = 'Voltage Divider (Across Load)';
-            outputVoltage.querySelector('.label').textContent = 'Output Voltage (across Load)';
-            currentFlow.querySelector('.label').textContent = 'Current (through Load)';
-            powerDissipation.querySelector('.label').textContent = 'Power Dissipation (in Load)';
-            powerPercentage.querySelector('.label').textContent = 'Load Power Percentage';
-            powerPercentage.style.display = 'block';
+            configHeading.textContent = 'Voltage Divider (With Load)';
+            configImage.src = 'Images/Load-Voltage-Divider.svg';
+            formulaImage.src = 'Images/Load-Voltage-Divider-Equation.svg';
+            rloadField.style.display = 'block';
+            // Update labels for load mode
+            outputVoltage.querySelector('.label').textContent = 'Voltage Across Load';
+            currentFlow.querySelector('.label').textContent = 'Current Through Load';
+            powerDissipation.querySelector('.label').textContent = 'Power in Load';
+            powerPercentage.querySelector('.label').textContent = 'Load Power %';
         }
         clearInputs();
+        calculateResults(); // Recalculate when mode changes
     });
 
-    // Prevent negative numbers on input
-    function preventNegative(e) {
+    // Prevent negative numbers and trigger calculation on input
+    function handleInput(e) {
         if (e.target.value < 0) {
             e.target.value = '';
         }
+        calculateResults();
     }
 
-    // Add input validation for negative numbers
-    inputVoltage.addEventListener('input', preventNegative);
-    r1Input.addEventListener('input', preventNegative);
-    r2Input.addEventListener('input', preventNegative);
-    loadResistance.addEventListener('input', preventNegative);
-
-    // Convert resistance based on unit
-    function convertResistance(value, unit) {
-        switch(unit) {
-            case 'kohm':
-                return value * 1000;
-            case 'mohm':
-                return value * 1000000;
-            default:
-                return value;
-        }
-    }
-
-    // Calculate voltage divider without load
-    function calculateNoLoad(vin, r1, r2) {
-        const vout = (r2 / (r1 + r2)) * vin;
-        const current = vout / r2;  // Current through R2
-        const power = Math.pow(current, 2) * r2;  // Power in R2 only
-        return {
-            voltage: vout,
-            current: current,
-            power: power
-        };
-    }
-
-    // Calculate voltage divider with load
-    function calculateWithLoad(vin, r1, r2, rl) {
-        const r2rl = (r2 * rl) / (r2 + rl);
-        const rtotal = r1 + r2rl;
-        const vout = (r2rl / rtotal) * vin;
-        const loadCurrent = vout / rl;  // Current through load resistor
-        const loadPower = Math.pow(loadCurrent, 2) * rl;  // Power in load resistor
-        
-        // Calculate total power and percentage
-        const totalCurrent = vin / rtotal;
-        const p1 = Math.pow(totalCurrent, 2) * r1;  // Power in R1
-        const r2Current = vout / r2;  // Current through R2
-        const p2 = Math.pow(r2Current, 2) * r2;  // Power in R2
-        const totalPower = p1 + p2 + loadPower;
-        const powerPercent = (loadPower / totalPower) * 100;
-
-        return {
-            voltage: vout,
-            current: loadCurrent,
-            power: loadPower,
-            powerPercent: powerPercent
-        };
-    }
+    // Add input validation and auto-calculation
+    inputVoltage.addEventListener('input', handleInput);
+    r1Input.addEventListener('input', handleInput);
+    r2Input.addEventListener('input', handleInput);
+    rloadInput.addEventListener('input', handleInput);
 
     // Format number to 3 decimal places
     function formatNumber(num) {
         return Number(num.toFixed(3));
     }
 
-    // Calculate and display results
+    // Calculate results based on mode
     function calculateResults() {
-        // Get input values
         const vin = parseFloat(inputVoltage.value);
-        const r1 = convertResistance(parseFloat(r1Input.value), resistanceUnitSelect.value);
-        const r2 = convertResistance(parseFloat(r2Input.value), resistanceUnitSelect.value);
+        const r1 = parseFloat(r1Input.value);
+        const r2 = parseFloat(r2Input.value);
         
-        // Clear results if inputs are invalid
-        if (isNaN(vin) || isNaN(r1) || isNaN(r2) || vin <= 0 || r1 <= 0 || r2 <= 0) {
-            outputVoltage.querySelector('.value').textContent = '';
-            currentFlow.querySelector('.value').textContent = '';
-            powerDissipation.querySelector('.value').textContent = '';
-            powerPercentage.querySelector('.value').textContent = '';
-            return;
+        if (isNaN(vin) || isNaN(r1) || isNaN(r2) || vin < 0 || r1 <= 0 || r2 <= 0) {
+            return; // Silently return if inputs are invalid
         }
 
-        let result;
-        if (modeSelect.value === 'noLoad') {
-            result = calculateNoLoad(vin, r1, r2);
-            outputVoltage.querySelector('.label').textContent = 'Output Voltage (across R2)';
-            currentFlow.querySelector('.label').textContent = 'Current (through R2)';
-            powerDissipation.querySelector('.label').textContent = 'Power Dissipation (in R2)';
-            outputVoltage.querySelector('.value').textContent = `${formatNumber(result.voltage)} V`;
-            currentFlow.querySelector('.value').textContent = `${formatNumber(result.current * 1000)} mA`;
-            powerDissipation.querySelector('.value').textContent = `${formatNumber(result.power)} W`;
-            powerPercentage.style.display = 'none';
+        if (modeSelect.value === 'noload') {
+            calculateNoLoad(vin, r1, r2);
         } else {
-            const rl = convertResistance(parseFloat(loadResistance.value), resistanceUnitSelect.value);
-            if (isNaN(rl) || rl <= 0) {
-                outputVoltage.querySelector('.value').textContent = '';
-                currentFlow.querySelector('.value').textContent = '';
-                powerDissipation.querySelector('.value').textContent = '';
-                powerPercentage.querySelector('.value').textContent = '';
-                return;
+            const rload = parseFloat(rloadInput.value);
+            if (isNaN(rload) || rload <= 0) {
+                return; // Silently return if load resistance is invalid
             }
-            result = calculateWithLoad(vin, r1, r2, rl);
-            outputVoltage.querySelector('.label').textContent = 'Output Voltage (across Load)';
-            currentFlow.querySelector('.label').textContent = 'Current (through Load)';
-            powerDissipation.querySelector('.label').textContent = 'Power Dissipation (in Load)';
-            powerPercentage.querySelector('.label').textContent = 'Load Power Percentage';
-            outputVoltage.querySelector('.value').textContent = `${formatNumber(result.voltage)} V`;
-            currentFlow.querySelector('.value').textContent = `${formatNumber(result.current * 1000)} mA`;
-            powerDissipation.querySelector('.value').textContent = `${formatNumber(result.power)} W`;
-            powerPercentage.querySelector('.value').textContent = `${formatNumber(result.powerPercent)}%`;
-            powerPercentage.style.display = 'block';
+            calculateWithLoad(vin, r1, r2, rload);
         }
     }
 
-    // Add input event listeners
-    inputVoltage.addEventListener('input', calculateResults);
-    r1Input.addEventListener('input', calculateResults);
-    r2Input.addEventListener('input', calculateResults);
-    loadResistance.addEventListener('input', calculateResults);
-    resistanceUnitSelect.addEventListener('change', calculateResults);
+    function calculateNoLoad(vin, r1, r2) {
+        // Calculate voltage divider without load
+        const vout = (r2 / (r1 + r2)) * vin;
+        const current = (vin / (r1 + r2)) * 1000; // Convert to mA
+        const p1 = (current * current * r1) / 1000; // Convert to mW
+        const p2 = (current * current * r2) / 1000; // Convert to mW
+        const totalPower = p1 + p2;
+        const p2Percentage = (p2 / totalPower) * 100;
 
-    // Initialize calculator
+        outputVoltage.querySelector('.value').textContent = vout.toFixed(3) + ' V';
+        currentFlow.querySelector('.value').textContent = current.toFixed(3) + ' mA';
+        powerDissipation.querySelector('.value').textContent = p2.toFixed(3) + ' mW';
+        powerPercentage.querySelector('.value').textContent = p2Percentage.toFixed(1) + '%';
+    }
+
+    function calculateWithLoad(vin, r1, r2, rload) {
+        // Calculate parallel resistance of R2 and Rload
+        const r2Parallel = (r2 * rload) / (r2 + rload);
+        const totalR = r1 + r2Parallel;
+        
+        // Calculate voltage and current
+        const vout = (r2Parallel / totalR) * vin;
+        const totalCurrent = (vin / totalR); // Keep in A for power calc
+        const r2Current = vout / r2; // Keep in A for power calc
+        const loadCurrent = vout / rload; // Keep in A for power calc
+        
+        // Calculate power
+        const p1 = totalCurrent * totalCurrent * r1 * 1000; // Convert to mW
+        const p2 = r2Current * r2Current * r2 * 1000; // Convert to mW
+        const pLoad = loadCurrent * loadCurrent * rload * 1000; // Convert to mW
+        const totalPower = p1 + p2 + pLoad;
+        const loadPercentage = (pLoad / totalPower) * 100;
+
+        // Debug calculations
+        console.log('--- Voltage Divider Calculations ---');
+        console.log('R2||RL:', r2Parallel.toFixed(2) + 'Ω');
+        console.log('Total R:', totalR.toFixed(2) + 'Ω');
+        console.log('Vout:', vout.toFixed(3) + 'V');
+        console.log('Total Current:', (totalCurrent * 1000).toFixed(3) + 'mA');
+        console.log('R2 Current:', (r2Current * 1000).toFixed(3) + 'mA');
+        console.log('Load Current:', (loadCurrent * 1000).toFixed(3) + 'mA');
+        console.log('P1:', p1.toFixed(3) + 'mW');
+        console.log('P2:', p2.toFixed(3) + 'mW');
+        console.log('PLoad:', pLoad.toFixed(3) + 'mW');
+        console.log('Total Power:', totalPower.toFixed(3) + 'mW');
+        console.log('Load Power %:', loadPercentage.toFixed(1) + '%');
+
+        outputVoltage.querySelector('.value').textContent = vout.toFixed(3) + ' V';
+        currentFlow.querySelector('.value').textContent = (loadCurrent * 1000).toFixed(3) + ' mA';
+        powerDissipation.querySelector('.value').textContent = pLoad.toFixed(3) + ' mW';
+        powerPercentage.querySelector('.value').textContent = loadPercentage.toFixed(1) + '%';
+    }
+
+    // Event listener for reset button
+    resetButton.addEventListener('click', clearInputs);
+
+    // Initialize the UI
     modeSelect.dispatchEvent(new Event('change'));
 }); 

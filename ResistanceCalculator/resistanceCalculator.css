@@ -23,19 +23,20 @@ body {
     background-color: white;
     border-radius: 15px;
     min-height: 500px;
+    padding: 20px;
 }
 
 .calculator-panel {
-    flex: 1;
+    flex: 0.8;
     padding: 5px;
     display: flex;
     flex-direction: column;
-    min-width: 300px;
-    max-width: 450px;
+    min-width: 0;
+    width: 100%;
 }
 
 .formula-panel {
-    flex: 1;
+    flex: 1.2;
     padding: 10px;
     border-left: 2px solid #eee;
     display: flex;
@@ -249,6 +250,21 @@ button:hover {
     transform: translateY(-2px);
 }
 
+@media (max-width: 1200px) {
+    .container {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .calculator-panel {
+        flex: 1;
+    }
+
+    .formula-panel {
+        flex: 1;
+    }
+}
+
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
@@ -256,10 +272,16 @@ button:hover {
         padding: 15px;
     }
     
+    .calculator-panel {
+        max-width: 100%;
+        padding: 0;
+    }
+    
     .formula-panel {
         border-left: none;
         border-top: 2px solid #eee;
         padding-top: 15px;
+        width: 100%;
     }
 
     .config-image img,

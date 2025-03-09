@@ -39,7 +39,6 @@ body {
 .formula-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     align-items: center;
 }
 
@@ -111,9 +110,8 @@ h4 {
 }
 
 label {
-    font-size: 14px;
-    color: #666;
     font-weight: 600;
+    color: #555;
 }
 
 input {

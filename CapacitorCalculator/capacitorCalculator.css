@@ -206,7 +206,7 @@ button:hover {
 }
 
 .learn-button:hover {
-    background-color: #dee2e6;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {
@@ -227,9 +227,6 @@ button:hover {
         max-width: 100%;
     }
 
-    .button-group {
-        flex-wrap: wrap;
-    }
 
     button {
         width: 100%;

@@ -145,28 +145,33 @@ input:disabled {
 .button-group {
     display: flex;
     gap: 10px;
+    justify-content: center;
     margin: 10px 0;
 }
 
 button {
-    padding: 8px 16px;
+    padding: 8px 20px;
     border: none;
-    border-radius: 4px;
-    background-color: #e9ecef;
-    color: #333;
-    cursor: pointer;
-    font-size: 14px;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: 600;
-    transition: background-color 0.2s;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    background-color: #4CAF50;
+    color: white;
 }
 
 button:hover {
-    background-color: #dee2e6;
+    transform: translateY(-2px);
 }
 
 button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+}
+
+#reset {
+    background-color: #f44336;
 }
 
 .formulas {
@@ -216,31 +221,32 @@ button:disabled {
 
 .learn-button {
     display: inline-block;
-    padding: 8px 16px;
-    background-color: #e9ecef;
-    color: #333;
+    padding: 8px 20px;
+    background-color: #fed700;
+    color: #555;
     text-decoration: none;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 8px;
     font-weight: 600;
-    transition: background-color 0.2s;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
 .learn-button:hover {
-    background-color: #dee2e6;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
+        gap: 15px;
+        padding: 15px;
     }
 
     .formula-panel {
         border-left: none;
         border-top: 1px solid #ddd;
     }
-
-    .formulas {
-        grid-template-columns: 1fr;
+    button {
+        width: 100%;
     }
+
 } 

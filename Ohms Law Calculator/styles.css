@@ -43,22 +43,9 @@ body {
     align-items: center;
 }
 
-.config-image, .formula-image {
+.formula-image {
     width: 100%;
     text-align: center;
-}
-
-.config-image img {
-    max-width: 70%;
-    height: auto;
-}
-
-h3 {
-    color: #333;
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 16px;
 }
 
 h4 {
@@ -205,9 +192,5 @@ button:disabled {
 
     .formulas {
         grid-template-columns: 1fr;
-    }
-
-    .config-image img {
-        max-width: 60%;
     }
 } 

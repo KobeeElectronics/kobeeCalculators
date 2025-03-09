@@ -215,20 +215,16 @@ button:hover {
         gap: 15px;
         padding: 15px;
     }
-
+    
     .formula-panel {
         border-left: none;
         border-top: 2px solid #eee;
         padding-top: 15px;
     }
 
-    #capacitor-inputs {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-
-    .config-image img, .formula-image img {
-        max-width: 60%;
+    .config-image img,
+    .formula-image img {
+        max-width: 100%;
     }
 
     .button-group {
@@ -237,6 +233,11 @@ button:hover {
 
     button {
         width: 100%;
+    }
+
+    #capacitor-inputs {
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 
     .capacitor-input {

@@ -8,12 +8,11 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
 .container {
@@ -22,21 +21,22 @@ body {
     max-width: 1000px;
     width: 100%;
     background-color: white;
-    padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-height: 500px;
+    padding: 20px;
 }
 
 .calculator-panel {
-    flex: 1;
-    padding: 10px;
+    flex: 0.8;
+    padding: 5px;
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    width: 100%;
 }
 
 .formula-panel {
-    flex: 1;
+    flex: 1.2;
     padding: 10px;
     border-left: 2px solid #eee;
     display: flex;
@@ -45,6 +45,7 @@ body {
 }
 
 .formula-content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -57,8 +58,9 @@ body {
 }
 
 .config-image img, .formula-image img {
-    max-width: 70%;
+    max-width: 400px;
     height: auto;
+    margin: 5px 0;
 }
 
 h3 {
@@ -70,15 +72,17 @@ h3 {
 }
 
 .input-group {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 15px;
-    height: 100%;
+    width: 100%;
 }
 
 .mode-selection, .unit-selection {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 100%;
 }
 
 label {
@@ -87,6 +91,7 @@ label {
 }
 
 select {
+    width: 100%;
     padding: 8px 12px;
     border: 2px solid #ddd;
     border-radius: 8px;
@@ -94,18 +99,29 @@ select {
     background-color: #f8f9fa;
     cursor: pointer;
     transition: all 0.3s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23555555%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 30px;
+    color: #333;
+    -webkit-text-fill-color: #333;
 }
-
 
 select:focus {
     outline: none;
     border-color: #FED700;
+    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
 }
 
 #capacitor-inputs {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    width: 100%;
     margin: 10px 0;
 }
 
@@ -113,25 +129,26 @@ select:focus {
     display: flex;
     gap: 8px;
     align-items: center;
-    padding: 0 5px;
+    width: 100%;
 }
 
 .capacitor-input input {
-    flex: 1;
+    width: 100%;
     padding: 8px 12px;
     border: 2px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
     transition: all 0.3s;
-    min-width: 0;
-    margin: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f8f9fa;
 }
 
 .capacitor-input input:focus {
     outline: none;
     border-color: #FED700;
     box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
-    margin: 2px;
 }
 
 .capacitor-input input::placeholder {
@@ -141,14 +158,17 @@ select:focus {
 .capacitor-input input.has-value {
     border-color: #FED700;
 }
+
 .button-group {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    justify-content: center;
+    width: 100%;
     margin: 10px 0;
 }
 
 button {
+    width: 100%;
     padding: 8px 20px;
     border: none;
     border-radius: 8px;
@@ -158,6 +178,7 @@ button {
     transition: transform 0.2s, background-color 0.2s;
     background-color: #4CAF50;
     color: white;
+    -webkit-text-fill-color: white;
 }
 
 button:hover {
@@ -166,10 +187,12 @@ button:hover {
 
 #remove-capacitor {
     background-color: #f44336;
+    color: white;
+    -webkit-text-fill-color: white;
 }
 
 .result {
-    margin: 15px 0;
+    margin-top: 15px;
 }
 
 .result-grid {
@@ -199,7 +222,7 @@ button:hover {
 }
 
 .learn-more {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: center;
 }
 
@@ -218,6 +241,21 @@ button:hover {
     transform: translateY(-2px);
 }
 
+@media (max-width: 1200px) {
+    .container {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .calculator-panel {
+        flex: 1;
+    }
+
+    .formula-panel {
+        flex: 1;
+    }
+}
+
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
@@ -225,15 +263,21 @@ button:hover {
         padding: 15px;
     }
     
+    .calculator-panel {
+        max-width: 100%;
+        padding: 0;
+    }
+    
     .formula-panel {
         border-left: none;
         border-top: 2px solid #eee;
         padding-top: 15px;
+        width: 100%;
     }
 
     .config-image img,
     .formula-image img {
-        max-width: 100%;
+        max-width: 300px;
     }
 
     button {
@@ -251,7 +295,19 @@ button:hover {
     }
 
     .capacitor-input input {
-        padding: 6px 10px;
+        padding: 10px 10px;
         font-size: 14px;
     }
+}
+
+input[type="number"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    margin: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 } 

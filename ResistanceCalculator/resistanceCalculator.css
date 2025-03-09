@@ -13,7 +13,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
 .container {
@@ -101,6 +100,8 @@ select {
     background-position: right 12px center;
     background-size: 12px;
     padding-right: 30px;
+    color: #333;
+    -webkit-text-fill-color: #333;
 }
 
 select:focus {
@@ -164,6 +165,9 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
+    background-color: #4CAF50;
+    color: white;
+    -webkit-text-fill-color: white;
 }
 
 button:hover {
@@ -172,6 +176,8 @@ button:hover {
 
 #remove-resistor {
     background-color: #f44336;
+    color: white;
+    -webkit-text-fill-color: white;
 }
 
 .result {

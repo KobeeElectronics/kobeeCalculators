@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter Calculator</title>
+    <link rel="stylesheet" href="lengthCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Length Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="Metric">
+                                    <option value="km">Kilometer (km)</option>
+                                    <option value="m">Meter (m)</option>
+                                    <option value="dm">Decimeter (dm)</option>
+                                    <option value="cm">Centimeter (cm)</option>
+                                    <option value="mm">Millimeter (mm)</option>
+                                    <option value="µm">Micrometer (µm)</option>
+                                    <option value="nm">Nanometer (nm)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="mi">Mile (mi)</option>
+                                    <option value="yd">Yard (yd)</option>
+                                    <option value="ft">Foot (ft)</option>
+                                    <option value="in">Inch (in)</option>
+                                </optgroup>
+                                <optgroup label="Maritime">
+                                    <option value="nmi">Nautical Mile</option>
+                                    <option value="ftm">Fathom</option>
+                                    <option value="cable">Cable</option>
+                                </optgroup>
+                                <optgroup label="Survey">
+                                    <option value="chain">Chain</option>
+                                    <option value="rd">Rod</option>
+                                    <option value="link">Link</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="ly">Light Year</option>
+                                    <option value="au">Astronomical Unit (AU)</option>
+                                    <option value="pc">Parsec</option>
+                                    <option value="angstrom">Angstrom (Å)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <!-- Same options as from-unit -->
+                                <optgroup label="Metric">
+                                    <option value="km">Kilometer (km)</option>
+                                    <option value="m">Meter (m)</option>
+                                    <option value="dm">Decimeter (dm)</option>
+                                    <option value="cm">Centimeter (cm)</option>
+                                    <option value="mm">Millimeter (mm)</option>
+                                    <option value="µm">Micrometer (µm)</option>
+                                    <option value="nm">Nanometer (nm)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="mi">Mile (mi)</option>
+                                    <option value="yd">Yard (yd)</option>
+                                    <option value="ft">Foot (ft)</option>
+                                    <option value="in">Inch (in)</option>
+                                </optgroup>
+                                <optgroup label="Maritime">
+                                    <option value="nmi">Nautical Mile</option>
+                                    <option value="ftm">Fathom</option>
+                                    <option value="cable">Cable</option>
+                                </optgroup>
+                                <optgroup label="Survey">
+                                    <option value="chain">Chain</option>
+                                    <option value="rd">Rod</option>
+                                    <option value="link">Link</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="ly">Light Year</option>
+                                    <option value="au">Astronomical Unit (AU)</option>
+                                    <option value="pc">Parsec</option>
+                                    <option value="angstrom">Angstrom (Å)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Length Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Metric System</h4>
+                        <p>The metric system uses base-10 units. The meter (m) is the base unit, with prefixes indicating multiplication by powers of 10 (kilo-, centi-, milli-, etc.).</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Imperial/US Units</h4>
+                        <p>Common in the US and UK, these units include inches, feet, yards, and miles. 1 mile = 5280 feet, 1 yard = 3 feet, 1 foot = 12 inches.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Maritime Units</h4>
+                        <p>Used in navigation, the nautical mile is based on the Earth's circumference. 1 nautical mile equals 1.852 kilometers or about 1.15078 statute miles.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Astronomical Units</h4>
+                        <p>Used for cosmic distances, light years measure the distance light travels in one year. Parsecs and astronomical units (AU) are also common in astronomy.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lengthCalculator.js"></script>
+</body>
+</html> 

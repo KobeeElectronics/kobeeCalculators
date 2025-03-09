@@ -9,51 +9,86 @@
 <body>
     <div class="container">
         <h1>Resistor Value Calculator</h1>
+
+        <div class="resistor-type-selector">
+            <button class="type-btn active" data-type="through-hole">Through Hole</button>
+            <button class="type-btn" data-type="smd">SMD</button>
+        </div>
         
-        <div class="band-selector">
-            <label>Select Number of Bands:</label>
-            <select id="bandCount">
-                <option value="4">4 Bands</option>
-                <option value="5">5 Bands</option>
-                <option value="6">6 Bands</option>
-            </select>
-            <button id="resetButton" class="reset-btn">Reset</button>
-        </div>
-
-        <div class="resistor-container">
-            <div class="lead left-lead"></div>
-            <div class="resistor">
-                <div class="band band1" data-band="1" title="First Band"></div>
-                <div class="band band2" data-band="2" title="Second Band"></div>
-                <div class="band band3" data-band="3" title="Third Band"></div>
-                <div class="band multiplier" data-band="multiplier" title="Multiplier Band"></div>
-                <div class="band tolerance" data-band="tolerance" title="Tolerance Band"></div>
-                <div class="band temperature" data-band="temperature" title="Temperature Coefficient Band"></div>
+        <div id="throughHoleCalculator" class="calculator-section">
+            <div class="band-selector">
+                <label>Select Number of Bands:</label>
+                <select id="bandCount">
+                    <option value="4">4 Bands</option>
+                    <option value="5">5 Bands</option>
+                    <option value="6">6 Bands</option>
+                </select>
+                <button id="resetButton" class="reset-btn">Reset</button>
             </div>
-            <div class="lead right-lead"></div>
+
+            <div class="resistor-container">
+                <div class="lead left-lead"></div>
+                <div class="resistor">
+                    <div class="band band1" data-band="1" title="First Band"></div>
+                    <div class="band band2" data-band="2" title="Second Band"></div>
+                    <div class="band band3" data-band="3" title="Third Band"></div>
+                    <div class="band multiplier" data-band="multiplier" title="Multiplier Band"></div>
+                    <div class="band tolerance" data-band="tolerance" title="Tolerance Band"></div>
+                    <div class="band temperature" data-band="temperature" title="Temperature Coefficient Band"></div>
+                </div>
+                <div class="lead right-lead"></div>
+            </div>
+
+            <div class="color-picker" id="colorPicker">
+                <h3>Select Color for <span id="selectedBand">Band</span></h3>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: black;" data-color="black" title="Black (0)"></button>
+                    <button class="color-btn" style="background-color: brown;" data-color="brown" title="Brown (1)"></button>
+                    <button class="color-btn" style="background-color: red;" data-color="red" title="Red (2)"></button>
+                    <button class="color-btn" style="background-color: orange;" data-color="orange" title="Orange (3)"></button>
+                    <button class="color-btn" style="background-color: yellow;" data-color="yellow" title="Yellow (4)"></button>
+                    <button class="color-btn" style="background-color: green;" data-color="green" title="Green (5)"></button>
+                    <button class="color-btn" style="background-color: blue;" data-color="blue" title="Blue (6)"></button>
+                    <button class="color-btn" style="background-color: violet;" data-color="violet" title="Violet (7)"></button>
+                    <button class="color-btn" style="background-color: gray;" data-color="gray" title="Gray (8)"></button>
+                    <button class="color-btn" style="background-color: white;" data-color="white" title="White (9)"></button>
+                    <button class="color-btn gold" style="background-color: #FFD700;" data-color="gold" title="Gold (×0.1)"></button>
+                    <button class="color-btn silver" style="background-color: #C0C0C0;" data-color="silver" title="Silver (×0.01)"></button>
+                </div>
+            </div>
         </div>
 
-        <div class="color-picker" id="colorPicker">
-            <h3>Select Color for <span id="selectedBand">Band</span></h3>
-            <div class="color-options">
-                <button class="color-btn" style="background-color: black;" data-color="black" title="Black (0)"></button>
-                <button class="color-btn" style="background-color: brown;" data-color="brown" title="Brown (1)"></button>
-                <button class="color-btn" style="background-color: red;" data-color="red" title="Red (2)"></button>
-                <button class="color-btn" style="background-color: orange;" data-color="orange" title="Orange (3)"></button>
-                <button class="color-btn" style="background-color: yellow;" data-color="yellow" title="Yellow (4)"></button>
-                <button class="color-btn" style="background-color: green;" data-color="green" title="Green (5)"></button>
-                <button class="color-btn" style="background-color: blue;" data-color="blue" title="Blue (6)"></button>
-                <button class="color-btn" style="background-color: violet;" data-color="violet" title="Violet (7)"></button>
-                <button class="color-btn" style="background-color: gray;" data-color="gray" title="Gray (8)"></button>
-                <button class="color-btn" style="background-color: white;" data-color="white" title="White (9)"></button>
-                <button class="color-btn gold" style="background-color: #FFD700;" data-color="gold" title="Gold (×0.1)"></button>
-                <button class="color-btn silver" style="background-color: #C0C0C0;" data-color="silver" title="Silver (×0.01)"></button>
+        <div id="smdCalculator" class="calculator-section" style="display: none;">
+            <div class="smd-selector">
+                <label>Select SMD Format:</label>
+                <select id="smdFormat">
+                    <option value="3digit">3 Digit EIA</option>
+                    <option value="4digit">4 Digit EIA</option>
+                    <option value="eia96">EIA-96</option>
+                </select>
+                <button id="smdResetButton" class="reset-btn">Reset</button>
+            </div>
+
+            <div class="smd-resistor-container">
+                <div class="smd-resistor">
+                    <div class="smd-terminal left-terminal"></div>
+                    <div class="smd-body">
+                        <span class="smd-text" id="smdValue">000</span>
+                    </div>
+                    <div class="smd-terminal right-terminal"></div>
+                </div>
+            </div>
+
+            <div class="smd-input-section">
+                <div class="digit-inputs" id="digitInputs">
+                    <!-- Will be populated by JavaScript based on format -->
+                </div>
             </div>
         </div>
 
         <div class="result">
             <h2>Resistor Value:</h2>
-            <p id="resistorValue">Select all bands to calculate</p>
+            <p id="resistorValue">Select all values to calculate</p>
             <p id="toleranceValue"></p>
             <p id="temperatureValue"></p>
         </div>

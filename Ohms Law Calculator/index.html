@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohm's Law Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <div class="voltage-input">
+                    <label for="voltage">Voltage (V)</label>
+                    <input type="number" id="voltage" placeholder="Enter voltage" step="any">
+                </div>
+                <div class="current-input">
+                    <label for="current">Current (A)</label>
+                    <input type="number" id="current" placeholder="Enter current" step="any">
+                </div>
+                <div class="resistance-input">
+                    <label for="resistance">Resistance (Ω)</label>
+                    <input type="number" id="resistance" placeholder="Enter resistance" step="any">
+                </div>
+                <div class="power-input">
+                    <label for="power">Power (W)</label>
+                    <input type="number" id="power" placeholder="Enter power" step="any">
+                </div>
+                <div class="button-group">
+                    <button id="calculate">Calculate</button>
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <div class="formula-image">
+                    <div class="formulas">
+                        <div class="formula-group voltage">
+                            <h4>Voltage (V)</h4>
+                            <p>V = I × R</p>
+                            <p>V = √(P × R)</p>
+                            <p>V = P ÷ I</p>
+                        </div>
+                        <div class="formula-group current">
+                            <h4>Current (I)</h4>
+                            <p>I = V ÷ R</p>
+                            <p>I = √(P ÷ R)</p>
+                            <p>I = P ÷ V</p>
+                        </div>
+                        <div class="formula-group resistance">
+                            <h4>Resistance (R)</h4>
+                            <p>R = V ÷ I</p>
+                            <p>R = V² ÷ P</p>
+                            <p>R = P ÷ I²</p>
+                        </div>
+                        <div class="formula-group power">
+                            <h4>Power (P)</h4>
+                            <p>P = V × I</p>
+                            <p>P = I² × R</p>
+                            <p>P = V² ÷ R</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

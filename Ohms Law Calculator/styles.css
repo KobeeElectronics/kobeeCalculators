@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-panel {
+    flex: 1;
+    padding: 10px;
+}
+
+.formula-panel {
+    flex: 1;
+    padding: 10px;
+    border-left: 1px solid #ddd;
+}
+
+.formula-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.config-image, .formula-image {
+    width: 100%;
+    text-align: center;
+}
+
+.config-image img {
+    max-width: 70%;
+    height: auto;
+}
+
+h3 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+h4 {
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.voltage-input,
+.current-input,
+.resistance-input,
+.power-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    color: #333;
+    transition: border-color 0.2s;
+}
+
+input:hover {
+    border-color: #FED700;
+}
+
+input:focus {
+    outline: none;
+    border-color: #FED700;
+}
+
+input:disabled {
+    background-color: #f8f8f8;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #dee2e6;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.formulas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.formula-group {
+    text-align: center;
+}
+
+.formula-group p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.formula-group.highlight h4 {
+    color: #FED700;
+}
+
+.formula-group.highlight p {
+    color: #333;
+    font-weight: 500;
+}
+
+.learn-more {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.learn-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #e9ecef;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.learn-button:hover {
+    background-color: #dee2e6;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .formula-panel {
+        border-left: none;
+        border-top: 1px solid #ddd;
+    }
+
+    .formulas {
+        grid-template-columns: 1fr;
+    }
+
+    .config-image img {
+        max-width: 60%;
+    }
+} 

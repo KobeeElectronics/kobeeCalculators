@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitor Impedance Calculator</title>
+    <link rel="stylesheet" href="capacitorImpedance.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Capacitor Impedance Calculator</h2>
+                <div class="input-grid">
+                    <div class="input-field">
+                        <label>Capacitance (C):</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="capacitance" placeholder="Enter value" step="any">
+                            <select id="capacitanceUnit">
+                                <option value="1e-12">pF</option>
+                                <option value="1e-9">nF</option>
+                                <option value="1e-6" selected>µF</option>
+                                <option value="1e-3">mF</option>
+                                <option value="1">F</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <label>Frequency (f):</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="frequency" placeholder="Enter value" step="any">
+                            <select id="frequencyUnit">
+                                <option value="1" selected>Hz</option>
+                                <option value="1e3">kHz</option>
+                                <option value="1e6">MHz</option>
+                                <option value="1e9">GHz</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-field">
+                    <label>Impedance (Xc):</label>
+                    <div class="result-display">
+                        <span id="impedanceValue">-</span>
+                        <span class="unit">Ω</span>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="image-container">
+                <h3>Capacitor Impedance</h3>
+                <div class="circuit-image">
+                    <!-- Image placeholder -->
+                    <div class="placeholder">Circuit Diagram Placeholder</div>
+                </div>
+            </div>
+            <div class="formula-content">
+                <div class="formula-card">
+                    <h4>Capacitive Reactance Formula</h4>
+                    <div class="equation">
+                        <div class="formula">
+                            <span class="variable">Xc</span> = <span class="fraction">1<hr><span class="denominator">2π × f × C</span></span>
+                        </div>
+                        <div class="variables">
+                            <div class="variable-item">
+                                <span class="symbol">Xc</span> = Capacitive reactance (Ω)
+                            </div>
+                            <div class="variable-item">
+                                <span class="symbol">f</span> = Frequency (Hz)
+                            </div>
+                            <div class="variable-item">
+                                <span class="symbol">C</span> = Capacitance (F)
+                            </div>
+                            <div class="variable-item">
+                                <span class="symbol">π</span> = 3.14159
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="learn-more">
+                <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+            </div>
+        </div>
+    </div>
+    <script src="capacitorImpedance.js"></script>
+</body>
+</html> 

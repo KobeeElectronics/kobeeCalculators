@@ -1,0 +1,253 @@
+/* Add box-sizing to all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-panel {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+}
+
+.formula-panel {
+    flex: 1.5;
+    padding: 10px;
+    border-left: 2px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+h2, h3 {
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.conversion-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-field label {
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.input-with-unit {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.input-with-unit input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.input-with-unit input:focus {
+    outline: none;
+    border-color: #FED700;
+    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
+}
+
+.input-with-unit input[readonly] {
+    background-color: #f8f9fa;
+    cursor: default;
+}
+
+.input-with-unit select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.input-with-unit select:focus {
+    outline: none;
+    border-color: #FED700;
+    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
+}
+
+.input-with-unit select:hover {
+    border-color: #ddd;
+}
+
+.swap-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#swap {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 2px solid #e9ecef;
+    border-radius: 50%;
+    background-color: white;
+    color: #555;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+#swap:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.1);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#reset {
+    padding: 8px 100px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    background-color: #f44336;
+    color: white;
+}
+
+#reset:hover {
+    transform: translateY(-2px);
+}
+
+.learn-more {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.learn-button {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #fed700;
+    color: #555;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.learn-button:hover {
+    transform: translateY(-2px);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.info-card {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.info-card h4 {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.info-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .calculator-panel {
+        max-width: 100%;
+    }
+    
+    .formula-panel {
+        border-left: none;
+        border-top: 2px solid #eee;
+        padding-top: 20px;
+    }
+
+    .conversion-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .swap-button {
+        transform: rotate(90deg);
+    }
+
+    #reset {
+        padding: 8px 50px;
+    }
+} 

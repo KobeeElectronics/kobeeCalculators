@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Converter Calculator</title>
+    <link rel="stylesheet" href="energyCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Energy Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="Joule Units">
+                                    <option value="J">Joule (J)</option>
+                                    <option value="MJ">Megajoule (MJ)</option>
+                                    <option value="kJ">Kilojoule (kJ)</option>
+                                    <option value="mJ">Millijoule (mJ)</option>
+                                    <option value="µJ">Microjoule (µJ)</option>
+                                    <option value="nJ">Nanojoule (nJ)</option>
+                                    <option value="GJ">Gigajoule (GJ)</option>
+                                    <option value="aJ">Attojoule (aJ)</option>
+                                </optgroup>
+                                <optgroup label="Power Units">
+                                    <option value="kWh">Kilowatt Hour (kW⋅h)</option>
+                                    <option value="GWh">Gigawatt Hour (GW⋅h)</option>
+                                    <option value="MWh">Megawatt Hour (MW⋅h)</option>
+                                    <option value="Wh">Watt Hour (W⋅h)</option>
+                                    <option value="kWs">Kilowatt Second (kW⋅s)</option>
+                                    <option value="Ws">Watt Second (W⋅s)</option>
+                                </optgroup>
+                                <optgroup label="Mechanical Units">
+                                    <option value="Nm">Newton Meter (N⋅m)</option>
+                                    <option value="dyncm">Dyne Centimeter (dyn⋅cm)</option>
+                                    <option value="gfm">Gram-force Meter (gf⋅m)</option>
+                                    <option value="gfcm">Gram-force Centimeter</option>
+                                    <option value="kgfcm">Kilogram-force Centimeter</option>
+                                    <option value="kgfm">Kilogram-force Meter</option>
+                                    <option value="kpm">Kilopond Meter (kp⋅m)</option>
+                                    <option value="lbfft">Pound-force Foot (lbf⋅ft)</option>
+                                    <option value="lbfin">Pound-force Inch (lbf⋅in)</option>
+                                    <option value="ozfin">Ounce-force Inch (ozf⋅in)</option>
+                                    <option value="ftlbf">Foot Pound (ft⋅lbf)</option>
+                                    <option value="inlbf">Inch Pound (in⋅lbf)</option>
+                                    <option value="inozf">Inch Ounce (in⋅ozf)</option>
+                                    <option value="pdlft">Poundal Foot (pdl⋅ft)</option>
+                                </optgroup>
+                                <optgroup label="Calories">
+                                    <option value="kcal">Kilocalorie (IT) (kcal)</option>
+                                    <option value="kcalth">Kilocalorie (th) (kcal)</option>
+                                    <option value="cal">Calorie (IT) (cal)</option>
+                                    <option value="calth">Calorie (th) (cal)</option>
+                                </optgroup>
+                                <optgroup label="BTU and Therm">
+                                    <option value="BTU">BTU (IT)</option>
+                                    <option value="BTUth">BTU (th)</option>
+                                    <option value="MBTU">Mega BTU (IT)</option>
+                                    <option value="therm">Therm</option>
+                                    <option value="thermEC">Therm (EC)</option>
+                                    <option value="thermUS">Therm (US)</option>
+                                </optgroup>
+                                <optgroup label="Other Units">
+                                    <option value="hph">Horsepower Hour</option>
+                                    <option value="tonref">Ton Hour (refrigeration)</option>
+                                    <option value="eV">Electron Volt (eV)</option>
+                                    <option value="keV">Kiloelectron Volt (keV)</option>
+                                    <option value="MeV">Megaelectron Volt (MeV)</option>
+                                    <option value="erg">Erg</option>
+                                    <option value="hartree">Hartree Energy</option>
+                                    <option value="rydberg">Rydberg Constant</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <optgroup label="Joule Units">
+                                    <option value="J">Joule (J)</option>
+                                    <option value="MJ">Megajoule (MJ)</option>
+                                    <option value="kJ">Kilojoule (kJ)</option>
+                                    <option value="mJ">Millijoule (mJ)</option>
+                                    <option value="µJ">Microjoule (µJ)</option>
+                                    <option value="nJ">Nanojoule (nJ)</option>
+                                    <option value="GJ">Gigajoule (GJ)</option>
+                                    <option value="aJ">Attojoule (aJ)</option>
+                                </optgroup>
+                                <optgroup label="Power Units">
+                                    <option value="kWh">Kilowatt Hour (kW⋅h)</option>
+                                    <option value="GWh">Gigawatt Hour (GW⋅h)</option>
+                                    <option value="MWh">Megawatt Hour (MW⋅h)</option>
+                                    <option value="Wh">Watt Hour (W⋅h)</option>
+                                    <option value="kWs">Kilowatt Second (kW⋅s)</option>
+                                    <option value="Ws">Watt Second (W⋅s)</option>
+                                </optgroup>
+                                <optgroup label="Mechanical Units">
+                                    <option value="Nm">Newton Meter (N⋅m)</option>
+                                    <option value="dyncm">Dyne Centimeter (dyn⋅cm)</option>
+                                    <option value="gfm">Gram-force Meter (gf⋅m)</option>
+                                    <option value="gfcm">Gram-force Centimeter</option>
+                                    <option value="kgfcm">Kilogram-force Centimeter</option>
+                                    <option value="kgfm">Kilogram-force Meter</option>
+                                    <option value="kpm">Kilopond Meter (kp⋅m)</option>
+                                    <option value="lbfft">Pound-force Foot (lbf⋅ft)</option>
+                                    <option value="lbfin">Pound-force Inch (lbf⋅in)</option>
+                                    <option value="ozfin">Ounce-force Inch (ozf⋅in)</option>
+                                    <option value="ftlbf">Foot Pound (ft⋅lbf)</option>
+                                    <option value="inlbf">Inch Pound (in⋅lbf)</option>
+                                    <option value="inozf">Inch Ounce (in⋅ozf)</option>
+                                    <option value="pdlft">Poundal Foot (pdl⋅ft)</option>
+                                </optgroup>
+                                <optgroup label="Calories">
+                                    <option value="kcal">Kilocalorie (IT) (kcal)</option>
+                                    <option value="kcalth">Kilocalorie (th) (kcal)</option>
+                                    <option value="cal">Calorie (IT) (cal)</option>
+                                    <option value="calth">Calorie (th) (cal)</option>
+                                </optgroup>
+                                <optgroup label="BTU and Therm">
+                                    <option value="BTU">BTU (IT)</option>
+                                    <option value="BTUth">BTU (th)</option>
+                                    <option value="MBTU">Mega BTU (IT)</option>
+                                    <option value="therm">Therm</option>
+                                    <option value="thermEC">Therm (EC)</option>
+                                    <option value="thermUS">Therm (US)</option>
+                                </optgroup>
+                                <optgroup label="Other Units">
+                                    <option value="hph">Horsepower Hour</option>
+                                    <option value="tonref">Ton Hour (refrigeration)</option>
+                                    <option value="eV">Electron Volt (eV)</option>
+                                    <option value="keV">Kiloelectron Volt (keV)</option>
+                                    <option value="MeV">Megaelectron Volt (MeV)</option>
+                                    <option value="erg">Erg</option>
+                                    <option value="hartree">Hartree Energy</option>
+                                    <option value="rydberg">Rydberg Constant</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Energy Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Joule (J)</h4>
+                        <p>The joule is the standard unit of energy in the International System of Units (SI). One joule equals the energy transferred when applying a force of one newton through a distance of one meter.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Power Units</h4>
+                        <p>Power units like kilowatt-hour (kWh) represent energy consumed over time. A kilowatt-hour is the energy consumed by a 1000-watt appliance running for one hour.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Mechanical Energy</h4>
+                        <p>Units like foot-pounds (ft⋅lb) and newton-meters (N⋅m) measure the energy transferred by applying a force over a distance.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Thermal Energy</h4>
+                        <p>BTU (British Thermal Unit) and calories measure heat energy. One BTU is the energy needed to raise one pound of water by one degree Fahrenheit.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="energyCalculator.js"></script>
+</body>
+</html> 

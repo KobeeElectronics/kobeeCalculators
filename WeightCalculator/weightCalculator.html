@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter Calculator</title>
+    <link rel="stylesheet" href="weightCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Weight Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="Metric">
+                                    <option value="kg">Kilograms (kg)</option>
+                                    <option value="g">Grams (g)</option>
+                                    <option value="mg">Milligrams (mg)</option>
+                                    <option value="mcg">Micrograms (μg)</option>
+                                    <option value="mt">Metric Tons (t)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="lb">Pounds (lb)</option>
+                                    <option value="oz">Ounces (oz)</option>
+                                    <option value="st">Stone (st)</option>
+                                    <option value="ton">US Tons (ton)</option>
+                                    <option value="long_ton">Long Tons (UK)</option>
+                                </optgroup>
+                                <optgroup label="Scientific">
+                                    <option value="dalton">Daltons (Da)</option>
+                                    <option value="atomic_mass">Atomic Mass Units (amu)</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="carat">Carats (ct)</option>
+                                    <option value="grain">Grains (gr)</option>
+                                    <option value="newton">Newtons (N)</option>
+                                    <option value="dram">Drams (dr)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <!-- Same options as from-unit -->
+                                <optgroup label="Metric">
+                                    <option value="kg">Kilograms (kg)</option>
+                                    <option value="g">Grams (g)</option>
+                                    <option value="mg">Milligrams (mg)</option>
+                                    <option value="mcg">Micrograms (μg)</option>
+                                    <option value="mt">Metric Tons (t)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="lb">Pounds (lb)</option>
+                                    <option value="oz">Ounces (oz)</option>
+                                    <option value="st">Stone (st)</option>
+                                    <option value="ton">US Tons (ton)</option>
+                                    <option value="long_ton">Long Tons (UK)</option>
+                                </optgroup>
+                                <optgroup label="Scientific">
+                                    <option value="dalton">Daltons (Da)</option>
+                                    <option value="atomic_mass">Atomic Mass Units (amu)</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="carat">Carats (ct)</option>
+                                    <option value="grain">Grains (gr)</option>
+                                    <option value="newton">Newtons (N)</option>
+                                    <option value="dram">Drams (dr)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Weight Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Metric System</h4>
+                        <p>The SI unit for mass is the kilogram (kg). Common variations include grams (g) for smaller measurements and metric tons (t) for larger masses. 1 kg = 1000 g = 1,000,000 mg.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Imperial/US Units</h4>
+                        <p>Pounds (lb) and ounces (oz) are common in the US, while stone (st) is used in the UK. 1 lb = 16 oz, 1 st = 14 lb, and 1 US ton = 2000 lb.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Scientific Units</h4>
+                        <p>Daltons (Da) and atomic mass units (amu) are used in chemistry and physics for atomic/molecular masses. 1 Da = 1 amu ≈ 1.660539067 × 10⁻²⁷ kg.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Special Units</h4>
+                        <p>Carats (ct) are used for gemstones, where 1 ct = 0.2 g. Newtons (N) measure weight as force, where 1 kg weighs approximately 9.81 N on Earth.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="weightCalculator.js"></script>
+</body>
+</html> 

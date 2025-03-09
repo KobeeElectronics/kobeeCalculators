@@ -1,3 +1,5 @@
+/* ohmsLawCalculator.css */
+
 * {
     margin: 0;
     padding: 0;
@@ -23,11 +25,14 @@ body {
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
 }
 
 .calculator-panel {
     flex: 1;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .formula-panel {
@@ -39,6 +44,7 @@ body {
 .formula-content {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     align-items: center;
 }
 
@@ -59,6 +65,7 @@ h4 {
     flex-direction: column;
     gap: 15px;
     margin: 10px 0;
+    height: 100%;
 }
 
 .voltage-input,
@@ -110,8 +117,9 @@ h4 {
 }
 
 label {
+    font-size: 14px;
+    color: #666;
     font-weight: 600;
-    color: #555;
 }
 
 input {
@@ -123,6 +131,7 @@ input {
     background-color: white;
     color: #333;
     transition: border-color 0.2s;
+    margin: 2px;
 }
 
 input:hover {
@@ -132,6 +141,7 @@ input:hover {
 input:focus {
     outline: none;
     border-color: #FED700;
+    margin: 2px;
 }
 
 input:disabled {
@@ -143,33 +153,28 @@ input:disabled {
 .button-group {
     display: flex;
     gap: 10px;
-    justify-content: center;
     margin: 10px 0;
 }
 
 button {
-    padding: 8px 20px;
+    padding: 8px 16px;
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    color: #333;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    background-color: #4CAF50;
-    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s;
 }
 
 button:hover {
-    transform: translateY(-2px);
+    background-color: #dee2e6;
 }
 
 button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
-}
-
-#reset {
-    background-color: #f44336;
 }
 
 .formulas {
@@ -204,14 +209,6 @@ button:disabled {
     box-shadow: 0 0 4px rgba(179, 255, 179, 0.5);
 }
 
-.formula-group.highlight p {
-    color: #333;
-}
-
-.formula-group.highlight h4 {
-    color: #333;
-}
-
 .learn-more {
     margin-top: 20px;
     text-align: center;
@@ -219,17 +216,18 @@ button:disabled {
 
 .learn-button {
     display: inline-block;
-    padding: 8px 20px;
-    background-color: #fed700;
-    color: #555;
+    padding: 8px 16px;
+    background-color: #e9ecef;
+    color: #333;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 4px;
+    font-size: 14px;
     font-weight: 600;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: background-color 0.2s;
 }
 
 .learn-button:hover {
-    transform: translateY(-2px);
+    background-color: #dee2e6;
 }
 
 @media (max-width: 900px) {
@@ -243,8 +241,12 @@ button:disabled {
         border-left: none;
         border-top: 1px solid #ddd;
     }
+
+    .formulas {
+        grid-template-columns: 1fr;
+    }
+
     button {
         width: 100%;
     }
-
 } 

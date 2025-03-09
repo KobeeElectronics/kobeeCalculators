@@ -13,6 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    position: relative;
 }
 
 .container {
@@ -25,6 +26,13 @@ body {
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-height: 500px;
+    position: relative;
+}
+
+.calculator-panel, .formula-panel {
+    position: relative;
+    z-index: 1;
+    background-color: white;
 }
 
 .calculator-panel {
@@ -412,4 +420,19 @@ button:hover {
 .resistance-group select:focus,
 .capacitance-group select:focus {
     border-left-width: 2px;
+}
+
+/* Remove the repeating background gradient */
+.container {
+    background: white;
+}
+
+/* Remove the text watermark */
+.container::before {
+    display: none;
+}
+
+/* Remove the diagonal lines */
+.container::after {
+    display: none;
 } 

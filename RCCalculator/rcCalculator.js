@@ -97,13 +97,23 @@ document.addEventListener('DOMContentLoaded', function() {
             stepSize: Math.ceil(maxVoltage * 1.2 / 5) // Create about 5 steps
         };
 
-        // For current, we need to handle both positive and negative values
+        // For current, we need to handle both positive and negative values based on mode
         const currentLimit = Math.ceil(maxCurrent * 1.2); // Add 20% margin
-        rcChart.options.scales.current.max = currentLimit;
-        rcChart.options.scales.current.min = -currentLimit;
-        rcChart.options.scales.current.ticks = {
-            stepSize: Math.ceil(currentLimit / 3) // Create about 6 steps (-3 to +3)
-        };
+        const mode = document.getElementById('mode').value;
+        
+        if (mode === 'charging') {
+            rcChart.options.scales.current.max = currentLimit;
+            rcChart.options.scales.current.min = 0;
+            rcChart.options.scales.current.ticks = {
+                stepSize: Math.ceil(currentLimit / 5) // Create about 5 steps
+            };
+        } else { // discharging
+            rcChart.options.scales.current.max = 0;
+            rcChart.options.scales.current.min = -currentLimit;
+            rcChart.options.scales.current.ticks = {
+                stepSize: Math.ceil(currentLimit / 5) // Create about 5 steps
+            };
+        }
 
         rcChart.update();
     }
@@ -157,14 +167,28 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calculate time constant (τ = RC) in milliseconds
         // R in ohms, C in µF gives τ in microseconds, so multiply by 0.001 for milliseconds
         const tau = r * c * 0.001;
-        timeConstant.querySelector('.value').textContent = tau.toFixed(3) + ' ms';
+        
+        // Format time constant based on value
+        let timeConstantDisplay;
+        if (tau >= 1000) {
+            timeConstantDisplay = (tau / 1000).toFixed(3) + ' s';
+        } else {
+            timeConstantDisplay = tau.toFixed(3) + ' ms';
+        }
+        timeConstant.querySelector('.value').textContent = timeConstantDisplay;
 
         // Calculate energy (E = 1/2 * C * V^2) in Joules
         // Convert capacitance from µF to F first (multiply by 1e-6)
         const e = 0.5 * (c * 1e-6) * v0 * v0;
-        // Format number to remove trailing zeros while keeping up to 6 significant digits
-        const formattedEnergy = Number(e.toPrecision(6)).toString();
-        energy.querySelector('.value').textContent = formattedEnergy + ' J';
+        
+        // Format energy based on value
+        let energyDisplay;
+        if (e < 0.001) { // Less than 1 mJ
+            energyDisplay = (e * 1000).toPrecision(6) + ' mJ';
+        } else {
+            energyDisplay = Number(e.toPrecision(6)).toString() + ' J';
+        }
+        energy.querySelector('.value').textContent = energyDisplay;
 
         if (modeSelect.value === 'charging') {
             calculateCharging(v0, r, c);

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Converter Calculator</title>
+    <link rel="stylesheet" href="speedCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Speed Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="Metric">
+                                    <option value="m_s">Meters per Second (m/s)</option>
+                                    <option value="km_h">Kilometers per Hour (km/h)</option>
+                                    <option value="km_s">Kilometers per Second (km/s)</option>
+                                    <option value="cm_s">Centimeters per Second (cm/s)</option>
+                                    <option value="mm_s">Millimeters per Second (mm/s)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="mph">Miles per Hour (mph)</option>
+                                    <option value="fps">Feet per Second (ft/s)</option>
+                                    <option value="ips">Inches per Second (in/s)</option>
+                                    <option value="yard_s">Yards per Second (yd/s)</option>
+                                    <option value="knot">Knots</option>
+                                </optgroup>
+                                <optgroup label="Aviation/Space">
+                                    <option value="mach">Mach</option>
+                                    <option value="kts">Knots (kts)</option>
+                                    <option value="c">Speed of Light (c)</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="kph">Kilometers per Hour (kph)</option>
+                                    <option value="mpm">Miles per Minute</option>
+                                    <option value="mps">Miles per Second</option>
+                                    <option value="fpm">Feet per Minute</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <!-- Same options as from-unit -->
+                                <optgroup label="Metric">
+                                    <option value="m_s">Meters per Second (m/s)</option>
+                                    <option value="km_h">Kilometers per Hour (km/h)</option>
+                                    <option value="km_s">Kilometers per Second (km/s)</option>
+                                    <option value="cm_s">Centimeters per Second (cm/s)</option>
+                                    <option value="mm_s">Millimeters per Second (mm/s)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="mph">Miles per Hour (mph)</option>
+                                    <option value="fps">Feet per Second (ft/s)</option>
+                                    <option value="ips">Inches per Second (in/s)</option>
+                                    <option value="yard_s">Yards per Second (yd/s)</option>
+                                    <option value="knot">Knots</option>
+                                </optgroup>
+                                <optgroup label="Aviation/Space">
+                                    <option value="mach">Mach</option>
+                                    <option value="kts">Knots (kts)</option>
+                                    <option value="c">Speed of Light (c)</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="kph">Kilometers per Hour (kph)</option>
+                                    <option value="mpm">Miles per Minute</option>
+                                    <option value="mps">Miles per Second</option>
+                                    <option value="fpm">Feet per Minute</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Speed Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Metric System</h4>
+                        <p>The SI unit for speed is meters per second (m/s). Common alternatives include kilometers per hour (km/h) for road speeds and millimeters per second (mm/s) for precision measurements.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Imperial/US Units</h4>
+                        <p>Miles per hour (mph) is standard for road speeds in the US and UK. Feet per second (ft/s) is common in engineering, while knots are used in marine navigation.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Aviation & Space</h4>
+                        <p>Mach number represents speed relative to the speed of sound (Mach 1 ≈ 343 m/s at sea level). The speed of light (c) is approximately 299,792,458 m/s in vacuum.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Conversions</h4>
+                        <p>1 mph = 1.60934 km/h = 0.44704 m/s = 0.868976 knots. Mach 1 varies with altitude and temperature but is roughly 767.269 mph at sea level.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="speedCalculator.js"></script>
+</body>
+</html> 

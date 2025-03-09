@@ -167,21 +167,39 @@ function updateFormulaHighlighting(sourceId) {
     
     if (card) {
         card.classList.add('active');
-        // Highlight specific equations based on the source
-        if (sourceId === 'vp') {
-            // When Vp is the source, highlight all equations that use Vp
-            document.querySelectorAll('.formula-card .equations p').forEach(eq => {
-                if (eq.textContent.includes('Vp =') || 
-                    eq.textContent.includes('Vp-p = 2 × Vp') ||
-                    eq.textContent.includes('Vrms = Vp ÷') ||
-                    eq.textContent.includes('Vavg = 2 × Vp')) {
-                    eq.classList.add('active');
-                }
-            });
-        } else {
-            // For other sources, highlight their specific equations
-            card.querySelectorAll('.equations p').forEach(eq => eq.classList.add('active'));
-        }
+        
+        // Highlight equations based on the source
+        document.querySelectorAll('.formula-card .equations p').forEach(eq => {
+            const text = eq.textContent;
+            switch(sourceId) {
+                case 'vp':
+                    if (text.startsWith('Vp =') || 
+                        text.includes('= 2 × Vp') ||
+                        text.includes('= Vp ÷') ||
+                        text.includes('= 2 × Vp')) {
+                        eq.classList.add('active');
+                    }
+                    break;
+                case 'vpp':
+                    if (text.startsWith('Vp-p =') || 
+                        text.includes('= Vp-p ÷')) {
+                        eq.classList.add('active');
+                    }
+                    break;
+                case 'vrms':
+                    if (text.startsWith('Vrms =') || 
+                        text.includes('× Vrms')) {
+                        eq.classList.add('active');
+                    }
+                    break;
+                case 'vavg':
+                    if (text.startsWith('Vavg =') || 
+                        text.includes('× Vavg')) {
+                        eq.classList.add('active');
+                    }
+                    break;
+            }
+        });
     }
 }
 

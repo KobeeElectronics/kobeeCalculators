@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Op-Amp Circuit Calculator</title>
+    <link rel="stylesheet" href="opAmpCircuitCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <div class="mode-selection">
+                    <label for="configuration">Op-Amp Configuration</label>
+                    <select id="configuration">
+                        <option value="inverting">Inverting Amplifier</option>
+                        <option value="noninverting">Non-Inverting Amplifier</option>
+                        <option value="difference">Difference Amplifier</option>
+                        <option value="summing">Summing Amplifier</option>
+                    </select>
+                </div>
+                <div class="input-grid">
+                    <div class="input-field resistance-group">
+                        <label for="rf">Feedback Resistor (Rf)</label>
+                        <div class="input-unit-group">
+                            <input type="number" id="rf" placeholder="Value" step="any">
+                            <select id="rfUnit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field resistance-group">
+                        <label for="r1">Input Resistor (R1)</label>
+                        <div class="input-unit-group">
+                            <input type="number" id="r1" placeholder="Value" step="any">
+                            <select id="r1Unit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field resistance-group">
+                        <label for="r2">Second Resistor (R2)</label>
+                        <div class="input-unit-group">
+                            <input type="number" id="r2" placeholder="Value" step="any">
+                            <select id="r2Unit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <label for="inputVoltage">Input Voltage (Vin)</label>
+                        <input type="number" id="inputVoltage" placeholder="V" step="any">
+                    </div>
+                    <div class="input-field">
+                        <label for="inputVoltage2">Second Input (V2)</label>
+                        <input type="number" id="inputVoltage2" placeholder="V" step="any">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+                <div class="result">
+                    <div class="result-grid">
+                        <div class="result-card" id="gain">
+                            <div class="label">Voltage Gain (Av)</div>
+                            <div class="value">0</div>
+                        </div>
+                        <div class="result-card" id="outputVoltage">
+                            <div class="label">Output Voltage</div>
+                            <div class="value">0 V</div>
+                        </div>
+                        <div class="result-card" id="inputImpedance">
+                            <div class="label">Input Impedance</div>
+                            <div class="value">0 Ω</div>
+                        </div>
+                        <div class="result-card" id="bandwidth">
+                            <div class="label">Bandwidth</div>
+                            <div class="value">0 Hz</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <div class="config-image">
+                    <h3 id="configHeading">Op-Amp Configuration</h3>
+                    <img id="configImage" src="Images/Inverting-Amplifier.svg" alt="Circuit Configuration" />
+                </div>
+                <div class="formula-image">
+                    <img id="formulaImage" src="Images/Inverting-Formula.svg" alt="Formula" />
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="opAmpCircuitCalculator.js"></script>
+</body>
+</html> 

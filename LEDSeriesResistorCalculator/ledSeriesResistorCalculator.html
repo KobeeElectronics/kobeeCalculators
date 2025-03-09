@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Series Resistor Calculator</title>
+    <link rel="stylesheet" href="ledSeriesResistorCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <div class="mode-selection">
+                    <label for="configuration">LED Configuration</label>
+                    <select id="configuration">
+                        <option value="single">Single LED</option>
+                        <option value="series">LEDs in Series</option>
+                        <option value="parallel">LEDs in Parallel</option>
+                    </select>
+                </div>
+                <div class="input-grid">
+                    <div class="input-field">
+                        <label for="supplyVoltage">Supply Voltage</label>
+                        <input type="number" id="supplyVoltage" placeholder="V" step="any">
+                    </div>
+                    <div class="input-field">
+                        <label for="ledCount">Number of LEDs</label>
+                        <input type="number" id="ledCount" value="1" min="1" step="1">
+                    </div>
+                    <div class="input-field">
+                        <label for="forwardVoltage">LED Forward Voltage</label>
+                        <input type="number" id="forwardVoltage" placeholder="V" step="any">
+                    </div>
+                    <div class="input-field">
+                        <label for="forwardCurrent">LED Forward Current</label>
+                        <input type="number" id="forwardCurrent" placeholder="mA" step="any">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+                <div class="result">
+                    <div class="result-grid">
+                        <div class="result-card" id="resistorValue">
+                            <div class="label">Required Resistor</div>
+                            <div class="value">0 Ω</div>
+                        </div>
+                        <div class="result-card" id="powerDissipation">
+                            <div class="label">Power Dissipation</div>
+                            <div class="value">0 mW</div>
+                        </div>
+                        <div class="result-card" id="totalCurrent">
+                            <div class="label">Total Current</div>
+                            <div class="value">0 mA</div>
+                        </div>
+                        <div class="result-card" id="efficiency">
+                            <div class="label">Circuit Efficiency</div>
+                            <div class="value">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <div class="config-image">
+                    <h3 id="configHeading">LED Circuit Configuration</h3>
+                    <img id="configImage" src="Images/Single-LED-Circuit.svg" alt="Circuit Configuration" />
+                </div>
+                <div class="formula-image">
+                    <img id="formulaImage" src="Images/Single-LED-Formula.svg" alt="Formula" />
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="ledSeriesResistorCalculator.js"></script>
+</body>
+</html> 

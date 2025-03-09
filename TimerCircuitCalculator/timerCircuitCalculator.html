@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>555 Timer Circuit Calculator</title>
+    <link rel="stylesheet" href="timerCircuitCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <div class="mode-selection">
+                    <label for="mode">Operating Mode</label>
+                    <select id="mode">
+                        <option value="astable">Astable (Oscillator)</option>
+                        <option value="monostable">Monostable (One-Shot)</option>
+                    </select>
+                </div>
+                <div class="input-grid">
+                    <div class="input-field resistance-group">
+                        <label for="ra">Resistor RA</label>
+                        <div class="input-unit-group">
+                            <input type="number" id="ra" placeholder="Value" step="any">
+                            <select id="raUnit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field resistance-group">
+                        <label for="rb">Resistor RB</label>
+                        <div class="input-unit-group">
+                            <input type="number" id="rb" placeholder="Value" step="any">
+                            <select id="rbUnit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field capacitance-group">
+                        <label for="capacitance">Capacitor C</label>
+                        <div class="input-unit-group">
+                            <input type="number" id="capacitance" placeholder="Value" step="any">
+                            <select id="capacitanceUnit">
+                                <option value="0.000001">pF</option>
+                                <option value="0.001">nF</option>
+                                <option value="1" selected>µF</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+                <div class="result">
+                    <div class="result-grid">
+                        <div class="result-card" id="frequency">
+                            <div class="label">Frequency</div>
+                            <div class="value">0 Hz</div>
+                        </div>
+                        <div class="result-card" id="period">
+                            <div class="label">Period</div>
+                            <div class="value">0 ms</div>
+                        </div>
+                        <div class="result-card" id="dutyCycle">
+                            <div class="label">Duty Cycle</div>
+                            <div class="value">0%</div>
+                        </div>
+                        <div class="result-card" id="pulseWidth">
+                            <div class="label">Pulse Width</div>
+                            <div class="value">0 ms</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <div class="config-image">
+                    <h3 id="configHeading">555 Timer Configuration</h3>
+                    <img id="configImage" src="Images/Astable-Circuit.svg" alt="Circuit Configuration" />
+                </div>
+                <div class="formula-image">
+                    <img id="formulaImage" src="Images/Astable-Formula.svg" alt="Formula" />
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="timerCircuitCalculator.js"></script>
+</body>
+</html> 

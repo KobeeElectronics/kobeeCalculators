@@ -312,4 +312,29 @@ button:hover {
         padding: 6px 10px;
         font-size: 14px;
     }
+}
+
+.timing-diagram {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+}
+
+#waveformCanvas {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 10px 0;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.formula-image {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
 } 

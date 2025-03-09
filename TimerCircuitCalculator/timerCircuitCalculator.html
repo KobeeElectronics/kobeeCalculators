@@ -79,12 +79,17 @@
         </div>
         <div class="formula-panel">
             <div class="formula-content">
-                <div class="config-image">
-                    <h3 id="configHeading">555 Timer Configuration</h3>
-                    <img id="configImage" src="Images/Astable-Circuit.svg" alt="Circuit Configuration" />
-                </div>
-                <div class="formula-image">
-                    <img id="formulaImage" src="Images/Astable-Formula.svg" alt="Formula" />
+                <div class="timing-diagram">
+                    <h3 id="configHeading">555 Timer - Astable Mode</h3>
+                    <div style="position: relative;">
+                        <canvas id="waveformCanvas" width="400" height="200"></canvas>
+                        <div id="highTimeDisplay" style="position: absolute; top: 10px; left: 0; right: 0; text-align: center;">
+                            <div class="value">0 ms (H)</div>
+                        </div>
+                        <div id="lowTimeDisplay" style="position: absolute; bottom: -9px; left: 0; right: 0; text-align: center;">
+                            <div class="value">0 ms (L)</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="learn-more">
                     <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>

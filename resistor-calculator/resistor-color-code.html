@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistor Calculator</title>
+    <link rel="stylesheet" href="resistor-calculator-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Resistor Value Calculator</h1>
+        
+        <div class="band-selector">
+            <label>Select Number of Bands:</label>
+            <select id="bandCount">
+                <option value="4">4 Bands</option>
+                <option value="5">5 Bands</option>
+                <option value="6">6 Bands</option>
+            </select>
+            <button id="resetButton" class="reset-btn">Reset</button>
+        </div>
+
+        <div class="resistor-container">
+            <div class="lead left-lead"></div>
+            <div class="resistor">
+                <div class="band band1" data-band="1" title="First Band"></div>
+                <div class="band band2" data-band="2" title="Second Band"></div>
+                <div class="band band3" data-band="3" title="Third Band"></div>
+                <div class="band multiplier" data-band="multiplier" title="Multiplier Band"></div>
+                <div class="band tolerance" data-band="tolerance" title="Tolerance Band"></div>
+                <div class="band temperature" data-band="temperature" title="Temperature Coefficient Band"></div>
+            </div>
+            <div class="lead right-lead"></div>
+        </div>
+
+        <div class="color-picker" id="colorPicker">
+            <h3>Select Color for <span id="selectedBand">Band</span></h3>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: black;" data-color="black" title="Black (0)"></button>
+                <button class="color-btn" style="background-color: brown;" data-color="brown" title="Brown (1)"></button>
+                <button class="color-btn" style="background-color: red;" data-color="red" title="Red (2)"></button>
+                <button class="color-btn" style="background-color: orange;" data-color="orange" title="Orange (3)"></button>
+                <button class="color-btn" style="background-color: yellow;" data-color="yellow" title="Yellow (4)"></button>
+                <button class="color-btn" style="background-color: green;" data-color="green" title="Green (5)"></button>
+                <button class="color-btn" style="background-color: blue;" data-color="blue" title="Blue (6)"></button>
+                <button class="color-btn" style="background-color: violet;" data-color="violet" title="Violet (7)"></button>
+                <button class="color-btn" style="background-color: gray;" data-color="gray" title="Gray (8)"></button>
+                <button class="color-btn" style="background-color: white;" data-color="white" title="White (9)"></button>
+                <button class="color-btn gold" style="background-color: #FFD700;" data-color="gold" title="Gold (×0.1)"></button>
+                <button class="color-btn silver" style="background-color: #C0C0C0;" data-color="silver" title="Silver (×0.01)"></button>
+            </div>
+        </div>
+
+        <div class="result">
+            <h2>Resistor Value:</h2>
+            <p id="resistorValue">Select all bands to calculate</p>
+            <p id="toleranceValue"></p>
+            <p id="temperatureValue"></p>
+        </div>
+    </div>
+    <script src="resistor-band-calculator.js"></script>
+</body>
+</html> 

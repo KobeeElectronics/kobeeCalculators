@@ -120,19 +120,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear all inputs first
         clearInputs();
         
+        const container = document.querySelector('.container');
+        
         if (this.value === 'astable') {
             configHeading.textContent = '555 Timer - Astable Mode';
             rb.disabled = false;
-            rb.parentElement.parentElement.style.display = 'block'; // Show entire RB group including label
+            rb.parentElement.parentElement.style.display = 'block';
             highTimeDisplay.style.display = 'block';
             lowTimeDisplay.style.display = 'block';
+            // Show all result cards in astable mode
+            frequency.style.display = 'block';
+            dutyCycle.style.display = 'block';
+            period.style.display = 'block';
+            pulseWidth.style.display = 'block';
+            container.classList.remove('monostable-mode');
         } else {
             configHeading.textContent = '555 Timer - Monostable Mode';
             rb.value = '';
             rb.disabled = true;
-            rb.parentElement.parentElement.style.display = 'none'; // Hide entire RB group including label
+            rb.parentElement.parentElement.style.display = 'none';
             highTimeDisplay.style.display = 'block';
             lowTimeDisplay.style.display = 'none';
+            // Only show pulse width in monostable mode
+            frequency.style.display = 'none';
+            dutyCycle.style.display = 'none';
+            period.style.display = 'none';
+            pulseWidth.style.display = 'block';
+            container.classList.add('monostable-mode');
         }
         calculateResults();
     });
@@ -200,20 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayResults(freq, totalPeriod, dutyRatio, highTime, lowTime) {
-        // Format frequency with proper scaling
-        let freqDisplay;
-        if (freq < 0.001) { // Less than 1 mHz
-            freqDisplay = (freq * 1000).toFixed(3) + ' µHz';
-        } else if (freq < 1) { // Less than 1 Hz
-            freqDisplay = (freq * 1000).toFixed(3) + ' mHz';
-        } else if (freq < 1000) { // Less than 1 kHz
-            freqDisplay = freq.toFixed(3) + ' Hz';
-        } else if (freq < 1000000) { // Less than 1 MHz
-            freqDisplay = (freq / 1000).toFixed(3) + ' kHz';
-        } else { // 1 MHz or greater
-            freqDisplay = (freq / 1000000).toFixed(3) + ' MHz';
-        }
-
         // Format time periods with proper scaling
         function formatTime(seconds) {
             if (seconds >= 1) {
@@ -229,22 +229,40 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        frequency.querySelector('.value').textContent = freqDisplay;
-        period.querySelector('.value').textContent = formatTime(totalPeriod);
-        dutyCycle.querySelector('.value').textContent = dutyRatio.toFixed(1) + '%';
+        if (modeSelect.value === 'astable') {
+            // Format and display frequency only in astable mode
+            let freqDisplay;
+            if (freq < 0.001) { // Less than 1 mHz
+                freqDisplay = (freq * 1000).toFixed(3) + ' µHz';
+            } else if (freq < 1) { // Less than 1 Hz
+                freqDisplay = (freq * 1000).toFixed(3) + ' mHz';
+            } else if (freq < 1000) { // Less than 1 kHz
+                freqDisplay = freq.toFixed(3) + ' Hz';
+            } else if (freq < 1000000) { // Less than 1 MHz
+                freqDisplay = (freq / 1000).toFixed(3) + ' kHz';
+            } else { // 1 MHz or greater
+                freqDisplay = (freq / 1000000).toFixed(3) + ' MHz';
+            }
+            
+            frequency.querySelector('.value').textContent = freqDisplay;
+            period.querySelector('.value').textContent = formatTime(totalPeriod);
+            dutyCycle.querySelector('.value').textContent = dutyRatio.toFixed(1) + '%';
+            pulseWidth.querySelector('.label').textContent = 'High/Low Times';
+            pulseWidth.querySelector('.value').textContent = 
+                formatTime(highTime) + ' / ' + formatTime(lowTime);
+        } else {
+            // Only show pulse width in monostable mode
+            pulseWidth.querySelector('.label').textContent = 'Pulse Width';
+            pulseWidth.querySelector('.value').textContent = formatTime(highTime);
+        }
         
         // Update timing displays
         highTimeDisplay.querySelector('.value').textContent = formatTime(highTime) + ' (H)';
         if (lowTime === null) {
             // Monostable mode
-            pulseWidth.querySelector('.label').textContent = 'Pulse Width';
-            pulseWidth.querySelector('.value').textContent = formatTime(highTime);
             lowTimeDisplay.style.display = 'none';
         } else {
             // Astable mode
-            pulseWidth.querySelector('.label').textContent = 'High/Low Times';
-            pulseWidth.querySelector('.value').textContent = 
-                formatTime(highTime) + ' / ' + formatTime(lowTime);
             lowTimeDisplay.querySelector('.value').textContent = formatTime(lowTime) + ' (L)';
             lowTimeDisplay.style.display = 'block';
         }

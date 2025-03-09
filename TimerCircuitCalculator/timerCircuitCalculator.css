@@ -217,11 +217,10 @@ button:hover {
 }
 
 .result-card {
-    background-color: #f8f9fa;
-    padding: 10px;
+    padding: 15px;
+    background-color: #f5f5f5;
     border-radius: 8px;
     text-align: center;
-    border: 2px solid #e9ecef;
 }
 
 .result-card .label {
@@ -286,7 +285,7 @@ button:hover {
         gap: 8px;
     }
 
-    .result-card {
+    .result-card { 
         padding: 8px;
     }
 
@@ -337,4 +336,10 @@ button:hover {
     width: 100%;
     text-align: center;
     margin: 10px 0;
+}
+
+/* Full width for pulse width in monostable mode */
+.monostable-mode #pulseWidth {
+    grid-column: 1 / -1; /* Span all columns */
+    width: 100%;
 } 

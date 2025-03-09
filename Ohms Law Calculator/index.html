@@ -11,16 +11,35 @@
         <div class="calculator-panel">
             <div class="input-group">
                 <div class="voltage-input">
-                    <label for="voltage">Voltage (V)</label>
-                    <input type="number" id="voltage" placeholder="Enter voltage" step="any">
+                    <label for="voltage">Voltage</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="voltage" placeholder="Enter voltage" step="any">
+                        <select id="voltage-unit">
+                            <option value="V">V</option>
+                            <option value="mV">mV</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="current-input">
-                    <label for="current">Current (A)</label>
-                    <input type="number" id="current" placeholder="Enter current" step="any">
+                    <label for="current">Current</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="current" placeholder="Enter current" step="any">
+                        <select id="current-unit">
+                            <option value="A">A</option>
+                            <option value="mA">mA</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="resistance-input">
-                    <label for="resistance">Resistance (Ω)</label>
-                    <input type="number" id="resistance" placeholder="Enter resistance" step="any">
+                    <label for="resistance">Resistance</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="resistance" placeholder="Enter resistance" step="any">
+                        <select id="resistance-unit">
+                            <option value="Ω">Ω</option>
+                            <option value="kΩ">kΩ</option>
+                            <option value="MΩ">MΩ</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="power-input">
                     <label for="power">Power (W)</label>

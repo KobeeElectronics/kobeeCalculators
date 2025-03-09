@@ -71,6 +71,45 @@ h4 {
     gap: 5px;
 }
 
+.input-with-unit {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.input-with-unit input {
+    flex: 1;
+}
+
+.input-with-unit select {
+    width: 70px;
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    padding-right: 32px;
+}
+
+.input-with-unit select:hover {
+    border-color: #FED700;
+}
+
+.input-with-unit select:focus {
+    outline: none;
+    border-color: #FED700;
+}
+
 label {
     font-size: 14px;
     color: #666;
@@ -148,15 +187,26 @@ button:disabled {
     margin: 5px 0;
     color: #666;
     font-size: 14px;
+    background-color: white;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    transition: all 0.2s ease;
 }
 
-.formula-group.highlight h4 {
-    color: #FED700;
+.formula-group p.highlight {
+    background-color: #e6ffe6;
+    border-color: #b3ffb3;
+    color: #333;
+    box-shadow: 0 0 4px rgba(179, 255, 179, 0.5);
 }
 
 .formula-group.highlight p {
     color: #333;
-    font-weight: 500;
+}
+
+.formula-group.highlight h4 {
+    color: #333;
 }
 
 .learn-more {

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Converter Calculator</title>
+    <link rel="stylesheet" href="powerCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Power Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="SI Units">
+                                    <option value="w">Watts (W)</option>
+                                    <option value="kw">Kilowatts (kW)</option>
+                                    <option value="mw">Megawatts (MW)</option>
+                                    <option value="gw">Gigawatts (GW)</option>
+                                    <option value="mw_small">Milliwatts (mW)</option>
+                                </optgroup>
+                                <optgroup label="Mechanical/Industrial">
+                                    <option value="hp">Horsepower (hp)</option>
+                                    <option value="ps">Metric Horsepower (PS)</option>
+                                    <option value="ftlb_s">Foot-pounds/second (ft⋅lb/s)</option>
+                                    <option value="btu_h">BTU/hour (BTU/h)</option>
+                                    <option value="btu_m">BTU/minute (BTU/min)</option>
+                                </optgroup>
+                                <optgroup label="Energy Rate">
+                                    <option value="j_s">Joules/second (J/s)</option>
+                                    <option value="kj_h">Kilojoules/hour (kJ/h)</option>
+                                    <option value="kcal_h">Kilocalories/hour (kcal/h)</option>
+                                    <option value="cal_s">Calories/second (cal/s)</option>
+                                </optgroup>
+                                <optgroup label="Electrical">
+                                    <option value="va">Volt-amperes (VA)</option>
+                                    <option value="kva">Kilovolt-amperes (kVA)</option>
+                                    <option value="dBm">Decibel-milliwatts (dBm)</option>
+                                    <option value="mva">Megavolt-amperes (MVA)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <!-- Same options as from-unit -->
+                                <optgroup label="SI Units">
+                                    <option value="w">Watts (W)</option>
+                                    <option value="kw">Kilowatts (kW)</option>
+                                    <option value="mw">Megawatts (MW)</option>
+                                    <option value="gw">Gigawatts (GW)</option>
+                                    <option value="mw_small">Milliwatts (mW)</option>
+                                </optgroup>
+                                <optgroup label="Mechanical/Industrial">
+                                    <option value="hp">Horsepower (hp)</option>
+                                    <option value="ps">Metric Horsepower (PS)</option>
+                                    <option value="ftlb_s">Foot-pounds/second (ft⋅lb/s)</option>
+                                    <option value="btu_h">BTU/hour (BTU/h)</option>
+                                    <option value="btu_m">BTU/minute (BTU/min)</option>
+                                </optgroup>
+                                <optgroup label="Energy Rate">
+                                    <option value="j_s">Joules/second (J/s)</option>
+                                    <option value="kj_h">Kilojoules/hour (kJ/h)</option>
+                                    <option value="kcal_h">Kilocalories/hour (kcal/h)</option>
+                                    <option value="cal_s">Calories/second (cal/s)</option>
+                                </optgroup>
+                                <optgroup label="Electrical">
+                                    <option value="va">Volt-amperes (VA)</option>
+                                    <option value="kva">Kilovolt-amperes (kVA)</option>
+                                    <option value="dBm">Decibel-milliwatts (dBm)</option>
+                                    <option value="mva">Megavolt-amperes (MVA)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Power Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>SI Units</h4>
+                        <p>The SI unit of power is the watt (W), defined as one joule per second. Common prefixes include kilowatt (kW = 1000 W), megawatt (MW = 1,000,000 W), and gigawatt (GW = 1,000,000,000 W).</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Mechanical Power</h4>
+                        <p>Horsepower (hp) is commonly used for engines and motors. 1 hp ≈ 745.7 watts. Metric horsepower (PS) is slightly different at 735.5 watts. BTU/hour measures heating/cooling capacity.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Energy Rate Units</h4>
+                        <p>Power can be expressed as energy per time unit. Common examples include joules/second (same as watts), BTU/hour for HVAC systems, and calories/second for thermal applications.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Electrical Power</h4>
+                        <p>Volt-amperes (VA) measure apparent power in AC circuits. dBm is used in electronics, representing power relative to 1 milliwatt. 0 dBm = 1 mW, 30 dBm = 1 W.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="powerCalculator.js"></script>
+</body>
+</html> 

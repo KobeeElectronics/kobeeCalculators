@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltage Calculator</title>
+    <link rel="stylesheet" href="voltageCalculator.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Voltage Calculator</h2>
+                <div class="voltage-grid">
+                    <div class="input-field">
+                        <label>Peak Voltage (Vp):</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vp" placeholder="Enter value" step="any">
+                            <span class="unit">V</span>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <label>Peak-to-Peak Voltage (Vp-p):</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vpp" placeholder="Enter value" step="any">
+                            <span class="unit">V</span>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <label>RMS Voltage (Vrms):</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vrms" placeholder="Enter value" step="any">
+                            <span class="unit">V</span>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <label>Average Voltage (Vavg):</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vavg" placeholder="Enter value" step="any">
+                            <span class="unit">V</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="frequency-control">
+                    <label>Frequency:</label>
+                    <div class="frequency-input">
+                        <input type="number" id="frequency" value="50" min="1" max="1000" step="1">
+                        <span class="unit">Hz</span>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="waveform-container">
+                <h3>Waveform Visualization</h3>
+                <canvas id="waveformChart"></canvas>
+            </div>
+            <div class="formula-grid">
+                <div class="formula-card" id="vp-card">
+                    <h4>Peak Voltage (Vp)</h4>
+                    <div class="equations">
+                        <p>Vp = Vp-p ÷ 2</p>
+                        <p>Vp = Vrms × √2</p>
+                        <p>Vp = π × Vavg ÷ 2</p>
+                    </div>
+                </div>
+                <div class="formula-card" id="vpp-card">
+                    <h4>Peak-to-Peak Voltage (Vp-p)</h4>
+                    <div class="equations">
+                        <p>Vp-p = 2 × Vp</p>
+                        <p>Vp-p = 2√2 × Vrms</p>
+                        <p>Vp-p = π × Vavg</p>
+                    </div>
+                </div>
+                <div class="formula-card" id="vrms-card">
+                    <h4>RMS Voltage (Vrms)</h4>
+                    <div class="equations">
+                        <p>Vrms = Vp ÷ √2</p>
+                        <p>Vrms = Vp-p ÷ 2√2</p>
+                        <p>Vrms = π × Vavg ÷ 2√2</p>
+                    </div>
+                </div>
+                <div class="formula-card" id="vavg-card">
+                    <h4>Average Voltage (Vavg)</h4>
+                    <div class="equations">
+                        <p>Vavg = 2 × Vp ÷ π</p>
+                        <p>Vavg = Vp-p ÷ π</p>
+                        <p>Vavg = 2√2 × Vrms ÷ π</p>
+                    </div>
+                </div>
+            </div>
+            <div class="learn-more">
+                <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+            </div>
+        </div>
+    </div>
+    <script src="voltageCalculator.js"></script>
+</body>
+</html> 

@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-panel {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+}
+
+.formula-panel {
+    flex: 1.5;
+    padding: 10px;
+    border-left: 2px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bottom-panel {
+    max-width: 1200px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.voltage-grid {
+    display: grid;
+    grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr);
+    gap: 20px;
+    margin-bottom: 15px;
+    align-items: start;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0; /* Prevent overflow */
+}
+
+.input-field label {
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.input-with-unit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-width: 0; /* Prevent overflow */
+}
+
+.input-with-unit input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+    min-width: 0; /* Prevent overflow */
+    width: 100%;
+}
+
+.input-with-unit input:focus {
+    outline: none;
+    border-color: #FED700;
+    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
+}
+
+.unit {
+    color: #555;
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 30px;
+}
+
+.frequency-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.frequency-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.frequency-input input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.frequency-input input:focus {
+    outline: none;
+    border-color: #FED700;
+    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
+}
+
+.waveform-container {
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    height: 320px;
+    position: relative;
+}
+
+.waveform-container canvas {
+    width: 100% !important;
+    height: 250px !important;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#reset {
+    padding: 8px 100px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    background-color: #f44336;
+    color: white;
+}
+
+#reset:hover {
+    transform: translateY(-2px);
+}
+
+.formula-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.formula-card {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s;
+}
+
+.formula-card.active {
+    border-color: #4CAF50;
+    background-color: #E8F5E9;
+}
+
+.formula-card h4 {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.equations p {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+    font-family: 'Courier New', monospace;
+}
+
+.equations p.active {
+    color: #000;
+    font-weight: bold;
+    background-color: #4CAF5033;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.info-card {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 10px;
+}
+
+.info-card h4 {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.info-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.info-card ul {
+    list-style-position: inside;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.info-card li {
+    margin-bottom: 5px;
+}
+
+.learn-more {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.learn-button {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #fed700;
+    color: #555;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.learn-button:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+    .formula-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .calculator-panel {
+        max-width: 100%;
+    }
+    
+    .formula-panel {
+        border-left: none;
+        border-top: 2px solid #eee;
+        padding-top: 20px;
+    }
+
+    .formula-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .formula-card {
+        padding: 10px;
+    }
+
+    .formula-card h4 {
+        font-size: 13px;
+    }
+
+    .equations p {
+        font-size: 12px;
+    }
+
+    #reset {
+        padding: 8px 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .voltage-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .input-field label {
+        font-size: 13px;
+    }
+
+    .input-with-unit input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .unit {
+        font-size: 13px;
+    }
+
+    .formula-card {
+        padding: 8px;
+    }
+
+    .formula-card h4 {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .equations p {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+} 

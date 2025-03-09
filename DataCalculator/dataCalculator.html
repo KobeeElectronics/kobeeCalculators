@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Size Converter Calculator</title>
+    <link rel="stylesheet" href="dataCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Data Size Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="Bytes">
+                                    <option value="b">Bytes (B)</option>
+                                    <option value="kb">Kilobytes (KB)</option>
+                                    <option value="mb">Megabytes (MB)</option>
+                                    <option value="gb">Gigabytes (GB)</option>
+                                    <option value="tb">Terabytes (TB)</option>
+                                    <option value="pb">Petabytes (PB)</option>
+                                </optgroup>
+                                <optgroup label="Bits">
+                                    <option value="bit">Bits (bit)</option>
+                                    <option value="kbit">Kilobits (Kbit)</option>
+                                    <option value="mbit">Megabits (Mbit)</option>
+                                    <option value="gbit">Gigabits (Gbit)</option>
+                                    <option value="tbit">Terabits (Tbit)</option>
+                                </optgroup>
+                                <optgroup label="Binary Units">
+                                    <option value="kib">Kibibytes (KiB)</option>
+                                    <option value="mib">Mebibytes (MiB)</option>
+                                    <option value="gib">Gibibytes (GiB)</option>
+                                    <option value="tib">Tebibytes (TiB)</option>
+                                    <option value="pib">Pebibytes (PiB)</option>
+                                </optgroup>
+                                <optgroup label="Legacy/Other">
+                                    <option value="word">Words (16-bit)</option>
+                                    <option value="block">Blocks (512B)</option>
+                                    <option value="nibble">Nibbles (4-bit)</option>
+                                    <option value="sector">Sectors (512B)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <!-- Same options as from-unit -->
+                                <optgroup label="Bytes">
+                                    <option value="b">Bytes (B)</option>
+                                    <option value="kb">Kilobytes (KB)</option>
+                                    <option value="mb">Megabytes (MB)</option>
+                                    <option value="gb">Gigabytes (GB)</option>
+                                    <option value="tb">Terabytes (TB)</option>
+                                    <option value="pb">Petabytes (PB)</option>
+                                </optgroup>
+                                <optgroup label="Bits">
+                                    <option value="bit">Bits (bit)</option>
+                                    <option value="kbit">Kilobits (Kbit)</option>
+                                    <option value="mbit">Megabits (Mbit)</option>
+                                    <option value="gbit">Gigabits (Gbit)</option>
+                                    <option value="tbit">Terabits (Tbit)</option>
+                                </optgroup>
+                                <optgroup label="Binary Units">
+                                    <option value="kib">Kibibytes (KiB)</option>
+                                    <option value="mib">Mebibytes (MiB)</option>
+                                    <option value="gib">Gibibytes (GiB)</option>
+                                    <option value="tib">Tebibytes (TiB)</option>
+                                    <option value="pib">Pebibytes (PiB)</option>
+                                </optgroup>
+                                <optgroup label="Legacy/Other">
+                                    <option value="word">Words (16-bit)</option>
+                                    <option value="block">Blocks (512B)</option>
+                                    <option value="nibble">Nibbles (4-bit)</option>
+                                    <option value="sector">Sectors (512B)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Data Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Decimal Units</h4>
+                        <p>Decimal prefixes use powers of 1000: 1 KB = 1000 bytes, 1 MB = 1000 KB, etc. These are commonly used in data transmission and storage marketing.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Binary Units</h4>
+                        <p>Binary prefixes use powers of 1024: 1 KiB = 1024 bytes, 1 MiB = 1024 KiB. These are more accurate for computer memory and file sizes in operating systems.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Bits vs Bytes</h4>
+                        <p>1 byte = 8 bits. Network speeds typically use bits (e.g., Mbps = megabits per second), while storage uses bytes (MB, GB). A nibble is half a byte (4 bits).</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Storage Units</h4>
+                        <p>Blocks and sectors are typically 512 bytes, used in disk storage. Words are 16 bits (2 bytes) in many computer architectures. Modern SSDs often use 4KB sectors.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="dataCalculator.js"></script>
+</body>
+</html> 

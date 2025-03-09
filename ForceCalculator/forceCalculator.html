@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force Converter Calculator</title>
+    <link rel="stylesheet" href="forceCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Force Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="SI Units">
+                                    <option value="n">Newtons (N)</option>
+                                    <option value="kn">Kilonewtons (kN)</option>
+                                    <option value="mn">Meganewtons (MN)</option>
+                                    <option value="mn_small">Millinewtons (mN)</option>
+                                    <option value="micron">Micronewtons (µN)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="lbf">Pound-force (lbf)</option>
+                                    <option value="kip">Kips (1000 lbf)</option>
+                                    <option value="ozf">Ounce-force (ozf)</option>
+                                    <option value="pdl">Poundals (pdl)</option>
+                                    <option value="tonf">Ton-force (tonf)</option>
+                                </optgroup>
+                                <optgroup label="Gravitational">
+                                    <option value="kgf">Kilogram-force (kgf)</option>
+                                    <option value="gf">Gram-force (gf)</option>
+                                    <option value="tf">Tonne-force (tf)</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="dyn">Dynes (dyn)</option>
+                                    <option value="sn">Sthène (sn)</option>
+                                    <option value="kp">Kilopond (kp)</option>
+                                    <option value="atm">Standard Atmospheres (atm)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <!-- Same options as from-unit -->
+                                <optgroup label="SI Units">
+                                    <option value="n">Newtons (N)</option>
+                                    <option value="kn">Kilonewtons (kN)</option>
+                                    <option value="mn">Meganewtons (MN)</option>
+                                    <option value="mn_small">Millinewtons (mN)</option>
+                                    <option value="micron">Micronewtons (µN)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="lbf">Pound-force (lbf)</option>
+                                    <option value="kip">Kips (1000 lbf)</option>
+                                    <option value="ozf">Ounce-force (ozf)</option>
+                                    <option value="pdl">Poundals (pdl)</option>
+                                    <option value="tonf">Ton-force (tonf)</option>
+                                </optgroup>
+                                <optgroup label="Gravitational">
+                                    <option value="kgf">Kilogram-force (kgf)</option>
+                                    <option value="gf">Gram-force (gf)</option>
+                                    <option value="tf">Tonne-force (tf)</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="dyn">Dynes (dyn)</option>
+                                    <option value="sn">Sthène (sn)</option>
+                                    <option value="kp">Kilopond (kp)</option>
+                                    <option value="atm">Standard Atmospheres (atm)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Force Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>SI Units</h4>
+                        <p>The SI unit of force is the newton (N), defined as the force needed to accelerate 1 kg at 1 m/s². Common prefixes include kilonewton (kN = 1000 N) and meganewton (MN = 1,000,000 N).</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Imperial/US Units</h4>
+                        <p>Pound-force (lbf) is the force of gravity on one pound mass. 1 lbf ≈ 4.448 N. Kips (1000 lbf) are used in engineering. Poundals are an alternative unit where 1 pdl ≈ 0.138255 N.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Gravitational Units</h4>
+                        <p>Kilogram-force (kgf) is the force of Earth's gravity on 1 kg mass. 1 kgf = 9.80665 N. These units depend on standard gravity (g = 9.80665 m/s²).</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Special Units</h4>
+                        <p>Dynes are CGS units (1 dyn = 10⁻⁵ N). The sthène is a MTS unit (1 sn = 1000 N). Standard atmosphere is a pressure unit but can express force when applied to an area.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="forceCalculator.js"></script>
+</body>
+</html> 

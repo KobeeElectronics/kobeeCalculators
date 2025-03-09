@@ -25,11 +25,14 @@ body {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
 }
 
 .calculator-panel {
     flex: 1;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .formula-panel {
@@ -62,6 +65,7 @@ h3 {
 .input-group {
     display: grid;
     gap: 15px;
+    height: 100%;
 }
 
 .mode-selection,
@@ -114,12 +118,14 @@ select:focus {
     font-size: 16px;
     transition: all 0.3s;
     min-width: 0;
+    margin: 2px;
 }
 
 .resistor-input input:focus {
     outline: none;
     border-color: #FED700;
     box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
+    margin: 2px;
 }
 
 .resistor-input input.has-value {
@@ -242,17 +248,22 @@ button:hover {
         max-width: 100%;
     }
 
-
     button {
         width: 100%;
     }
 
     #resistor-inputs {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
+        margin: 8px 0;
     }
 
     .resistor-input {
         padding: 0;
+    }
+
+    .resistor-input input {
+        padding: 6px 10px;
+        font-size: 14px;
     }
 }

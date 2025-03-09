@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const removeCapacitorButton = document.getElementById('remove-capacitor');
     const capacitorInputsDiv = document.getElementById('capacitor-inputs');
     const resultValue = document.getElementById('result-value');
-    const configHeading = document.getElementById('configHeading');
+    const networkTitle = document.getElementById('network-title');
     const headerImage = document.getElementById('headerImage');
     const calculationImage = document.getElementById('calculationImage');
     const unitSelect = document.getElementById('unit');
@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modeSelect.addEventListener('change', () => {
         if (modeSelect.value === 'series') {
-            configHeading.textContent = 'Series Capacitor';
+            networkTitle.textContent = 'Series Network';
             headerImage.src = 'Images/Capacitors-In-Series.svg';
             calculationImage.src = 'Images/Series-Capacitor-Equation.svg';
         } else {
-            configHeading.textContent = 'Parallel Capacitor';
+            networkTitle.textContent = 'Parallel Network';
             headerImage.src = 'Images/Capacitors-In-Parallel.svg';
             calculationImage.src = 'Images/Parallel-Capacitor-Equation.svg';
         }
@@ -85,15 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = input.value.trim();
             // Check if input is empty
             if (value === '') {
-                input.style.border = '1px solid #ccc';
+                input.style.borderColor = '#ddd';
                 hasEmptyInputs = true;
             } else {
                 const numValue = parseFloat(value);
-                if (isNaN(numValue) || numValue === 0) {
-                    input.style.border = '2px solid red';
+                if (isNaN(numValue) || numValue <= 0) {
+                    input.style.borderColor = '#f44336';
                     valid = false;
                 } else {
-                    input.style.border = '1px solid #ccc';
+                    input.style.borderColor = '#FED700';
                     // Convert input values to farads for calculation
                     const inputUnit = unitSelect.value;
                     let valueInFarads = numValue;
@@ -220,5 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         resultValue.textContent = `${Number(displayValue.toFixed(3))} ${displayUnit}`;
+    }
+
+    // Initialize the images and title
+    if (modeSelect.value === 'series') {
+        networkTitle.textContent = 'Series Network';
+        headerImage.src = 'Images/Capacitors-In-Series.svg';
+        calculationImage.src = 'Images/Series-Capacitor-Equation.svg';
+    } else {
+        networkTitle.textContent = 'Parallel Network';
+        headerImage.src = 'Images/Capacitors-In-Parallel.svg';
+        calculationImage.src = 'Images/Parallel-Capacitor-Equation.svg';
     }
 }); 

@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const removeResistorButton = document.getElementById('remove-resistor');
     const resistorInputsDiv = document.getElementById('resistor-inputs');
     const resultValue = document.getElementById('result-value');
-    const configHeading = document.getElementById('configHeading');
     const headerImage = document.getElementById('headerImage');
     const calculationImage = document.getElementById('calculationImage');
+    const networkTitle = document.getElementById('network-title');
     const unitSelect = document.getElementById('unit');
     let resistorCount = 2; // Start with 2 resistors
 
@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modeSelect.addEventListener('change', () => {
         if (modeSelect.value === 'series') {
-            configHeading.textContent = 'Series Resistor';
+            networkTitle.textContent = 'Series Network';
             headerImage.src = 'Images/Resistors-In-Series.svg';
             calculationImage.src = 'Images/Series-Resistor-Equation.svg';
         } else {
-            configHeading.textContent = 'Parallel Resistor';
+            networkTitle.textContent = 'Parallel Network';
             headerImage.src = 'Images/Resistors-In-Parallel.svg';
             calculationImage.src = 'Images/Parallel-Resistor-Equation.svg';
         }
@@ -74,21 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = input.value.trim();
             // Check if input is empty
             if (value === '') {
-                input.style.border = '1px solid #ccc';
+                input.style.borderColor = '#ddd';
                 hasEmptyInputs = true;
             } else {
                 const numValue = parseFloat(value);
-                if (isNaN(numValue) || numValue === 0) {
-                    input.style.border = '2px solid red';
+                if (isNaN(numValue) || numValue <= 0) {
+                    input.style.borderColor = '#f44336';
                     valid = false;
                 } else {
-                    input.style.border = '1px solid #ccc';
+                    input.style.borderColor = '#FED700';
                     // Convert input values to ohms for calculation
                     const inputUnit = unitSelect.value;
                     let valueInOhms = numValue;
                     if (inputUnit === 'kohm') {
                         valueInOhms = numValue * 1000;
-                    } else if (inputUnit === 'mohm') {
+                    } else if (inputUnit === 'Mohm') {
                         valueInOhms = numValue * 1000000;
                     }
                     resistors.push(valueInOhms);
@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const unit = document.getElementById('unit').value;
         let displayValue, displayUnit;
         
-        if (unit === 'mohm' && result < 1000000) {
+        if (unit === 'Mohm' && result < 1000000) {
             displayValue = result / 1000;
             displayUnit = 'kΩ';
-        } else if (unit === 'mohm') {
+        } else if (unit === 'Mohm') {
             displayValue = result / 1000000;
             displayUnit = 'MΩ';
         } else if (unit === 'kohm' && result < 1000000) {
@@ -171,5 +171,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         resultValue.textContent = `${Number(displayValue.toFixed(3))} ${displayUnit}`;
+    }
+
+    // Initialize the images and title
+    if (modeSelect.value === 'series') {
+        networkTitle.textContent = 'Series Network';
+        headerImage.src = 'Images/Resistors-In-Series.svg';
+        calculationImage.src = 'Images/Series-Resistor-Equation.svg';
+    } else {
+        networkTitle.textContent = 'Parallel Network';
+        headerImage.src = 'Images/Resistors-In-Parallel.svg';
+        calculationImage.src = 'Images/Parallel-Resistor-Equation.svg';
     }
 });

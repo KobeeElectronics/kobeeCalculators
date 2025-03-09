@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressure Converter Calculator</title>
+    <link rel="stylesheet" href="pressureCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Pressure Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="SI Units">
+                                    <option value="Pa">Pascal (Pa)</option>
+                                    <option value="kPa">Kilopascal (kPa)</option>
+                                    <option value="MPa">Megapascal (MPa)</option>
+                                    <option value="GPa">Gigapascal (GPa)</option>
+                                    <option value="bar">Bar</option>
+                                    <option value="mbar">Millibar (mbar)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="psi">Pounds per Square Inch (psi)</option>
+                                    <option value="ksi">Kilopounds per Square Inch (ksi)</option>
+                                    <option value="psf">Pounds per Square Foot (psf)</option>
+                                    <option value="inHg">Inches of Mercury (inHg)</option>
+                                    <option value="ftH2O">Feet of Water (ftH₂O)</option>
+                                    <option value="inH2O">Inches of Water (inH₂O)</option>
+                                </optgroup>
+                                <optgroup label="Atmospheric">
+                                    <option value="atm">Standard Atmosphere (atm)</option>
+                                    <option value="Torr">Torr</option>
+                                    <option value="mmHg">Millimeters of Mercury (mmHg)</option>
+                                    <option value="cmH2O">Centimeters of Water (cmH₂O)</option>
+                                    <option value="mmH2O">Millimeters of Water (mmH₂O)</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="dyn_cm2">Dynes per Square Centimeter (dyn/cm²)</option>
+                                    <option value="kgf_cm2">Kilogram-force per Square Centimeter (kgf/cm²)</option>
+                                    <option value="kgf_m2">Kilogram-force per Square Meter (kgf/m²)</option>
+                                    <option value="mtorr">Millitorr (mTorr)</option>
+                                    <option value="ubar">Microbar (μbar)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <!-- Same options as from-unit -->
+                                <optgroup label="SI Units">
+                                    <option value="Pa">Pascal (Pa)</option>
+                                    <option value="kPa">Kilopascal (kPa)</option>
+                                    <option value="MPa">Megapascal (MPa)</option>
+                                    <option value="GPa">Gigapascal (GPa)</option>
+                                    <option value="bar">Bar</option>
+                                    <option value="mbar">Millibar (mbar)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US">
+                                    <option value="psi">Pounds per Square Inch (psi)</option>
+                                    <option value="ksi">Kilopounds per Square Inch (ksi)</option>
+                                    <option value="psf">Pounds per Square Foot (psf)</option>
+                                    <option value="inHg">Inches of Mercury (inHg)</option>
+                                    <option value="ftH2O">Feet of Water (ftH₂O)</option>
+                                    <option value="inH2O">Inches of Water (inH₂O)</option>
+                                </optgroup>
+                                <optgroup label="Atmospheric">
+                                    <option value="atm">Standard Atmosphere (atm)</option>
+                                    <option value="Torr">Torr</option>
+                                    <option value="mmHg">Millimeters of Mercury (mmHg)</option>
+                                    <option value="cmH2O">Centimeters of Water (cmH₂O)</option>
+                                    <option value="mmH2O">Millimeters of Water (mmH₂O)</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="dyn_cm2">Dynes per Square Centimeter (dyn/cm²)</option>
+                                    <option value="kgf_cm2">Kilogram-force per Square Centimeter (kgf/cm²)</option>
+                                    <option value="kgf_m2">Kilogram-force per Square Meter (kgf/m²)</option>
+                                    <option value="mtorr">Millitorr (mTorr)</option>
+                                    <option value="ubar">Microbar (μbar)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Pressure Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>SI Units</h4>
+                        <p>The Pascal (Pa) is the SI unit for pressure, defined as one newton per square meter (N/m²). Common multiples include kilopascal (kPa), megapascal (MPa), and bar (100,000 Pa).</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Imperial/US Units</h4>
+                        <p>Pounds per square inch (psi) is widely used in the US and UK. Other units include inches of mercury (inHg) for atmospheric pressure and feet of water (ftH₂O) for hydraulic pressure.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Atmospheric Pressure</h4>
+                        <p>Standard atmospheric pressure is approximately 101,325 Pa, 1 atm, or 760 mmHg (torr). These units are commonly used in weather forecasting and altitude measurements.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Technical Units</h4>
+                        <p>Specialized units like kilogram-force per square centimeter (kgf/cm²) are used in engineering. The bar and its derivatives are common in industrial and meteorological applications.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="pressureCalculator.js"></script>
+</body>
+</html> 

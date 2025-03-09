@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Converter Calculator</title>
+    <link rel="stylesheet" href="volumeCalculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <h2>Volume Converter</h2>
+                <div class="conversion-grid">
+                    <div class="input-field">
+                        <label>From:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="from-value" placeholder="Enter value" step="any">
+                            <select id="from-unit">
+                                <optgroup label="Metric">
+                                    <option value="m3">Cubic Meter (m³)</option>
+                                    <option value="dm3">Cubic Decimeter (dm³)</option>
+                                    <option value="cm3">Cubic Centimeter (cm³)</option>
+                                    <option value="mm3">Cubic Millimeter (mm³)</option>
+                                    <option value="hl">Hectoliter (hl)</option>
+                                    <option value="l">Liter (L)</option>
+                                    <option value="dl">Deciliter (dl)</option>
+                                    <option value="cl">Centiliter (cl)</option>
+                                    <option value="ml">Milliliter (ml)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US Liquid">
+                                    <option value="gal">Gallon (gal)</option>
+                                    <option value="qt">Quart (qt)</option>
+                                    <option value="pt">Pint (pt)</option>
+                                    <option value="cup">Cup</option>
+                                    <option value="fl_oz">Fluid Ounce (fl oz)</option>
+                                    <option value="tbsp">Tablespoon (tbsp)</option>
+                                    <option value="tsp">Teaspoon (tsp)</option>
+                                    <option value="gi">Gill (gi)</option>
+                                </optgroup>
+                                <optgroup label="US Dry">
+                                    <option value="dry_qt">Dry Quart</option>
+                                    <option value="dry_pt">Dry Pint</option>
+                                    <option value="pk">Peck</option>
+                                    <option value="bu">Bushel</option>
+                                </optgroup>
+                                <optgroup label="Imperial">
+                                    <option value="uk_gal">Imperial Gallon</option>
+                                    <option value="uk_qt">Imperial Quart</option>
+                                    <option value="uk_pt">Imperial Pint</option>
+                                    <option value="uk_fl_oz">Imperial Fluid Ounce</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="bbl">Oil Barrel</option>
+                                    <option value="beer_bbl">Beer Barrel</option>
+                                    <option value="kl">Kiloliter (kl)</option>
+                                    <option value="ml">Megaliter (Ml)</option>
+                                    <option value="cc">Cubic Centimeter (cc)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="swap-button">
+                        <button id="swap" title="Swap units">⇅</button>
+                    </div>
+                    <div class="input-field">
+                        <label>To:</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="to-value" placeholder="Result" step="any" readonly>
+                            <select id="to-unit">
+                                <!-- Same options as from-unit -->
+                                <optgroup label="Metric">
+                                    <option value="m3">Cubic Meter (m³)</option>
+                                    <option value="dm3">Cubic Decimeter (dm³)</option>
+                                    <option value="cm3">Cubic Centimeter (cm³)</option>
+                                    <option value="mm3">Cubic Millimeter (mm³)</option>
+                                    <option value="hl">Hectoliter (hl)</option>
+                                    <option value="l">Liter (L)</option>
+                                    <option value="dl">Deciliter (dl)</option>
+                                    <option value="cl">Centiliter (cl)</option>
+                                    <option value="ml">Milliliter (ml)</option>
+                                </optgroup>
+                                <optgroup label="Imperial/US Liquid">
+                                    <option value="gal">Gallon (gal)</option>
+                                    <option value="qt">Quart (qt)</option>
+                                    <option value="pt">Pint (pt)</option>
+                                    <option value="cup">Cup</option>
+                                    <option value="fl_oz">Fluid Ounce (fl oz)</option>
+                                    <option value="tbsp">Tablespoon (tbsp)</option>
+                                    <option value="tsp">Teaspoon (tsp)</option>
+                                    <option value="gi">Gill (gi)</option>
+                                </optgroup>
+                                <optgroup label="US Dry">
+                                    <option value="dry_qt">Dry Quart</option>
+                                    <option value="dry_pt">Dry Pint</option>
+                                    <option value="pk">Peck</option>
+                                    <option value="bu">Bushel</option>
+                                </optgroup>
+                                <optgroup label="Imperial">
+                                    <option value="uk_gal">Imperial Gallon</option>
+                                    <option value="uk_qt">Imperial Quart</option>
+                                    <option value="uk_pt">Imperial Pint</option>
+                                    <option value="uk_fl_oz">Imperial Fluid Ounce</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="bbl">Oil Barrel</option>
+                                    <option value="beer_bbl">Beer Barrel</option>
+                                    <option value="kl">Kiloliter (kl)</option>
+                                    <option value="ml">Megaliter (Ml)</option>
+                                    <option value="cc">Cubic Centimeter (cc)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="formula-panel">
+            <div class="formula-content">
+                <h3>About Volume Units</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Metric System</h4>
+                        <p>The metric system uses cubic meters (m³) as the base unit. Liters are commonly used, with 1 liter equal to 1 cubic decimeter (1L = 1dm³ = 0.001m³).</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Imperial/US Liquid</h4>
+                        <p>US and Imperial gallons differ in size. Common units include gallons, quarts, pints, cups, and fluid ounces, with different conversion ratios between US and Imperial systems.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>US Dry Measures</h4>
+                        <p>Used primarily for dry goods in the US. The system includes bushels, pecks, dry quarts, and dry pints, which are different from their liquid counterparts.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Special Units</h4>
+                        <p>Special volume units include oil barrels (42 US gallons) and beer barrels (31 US gallons), which are used in specific industries for measurement and trade.</p>
+                    </div>
+                </div>
+                <div class="learn-more">
+                    <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="volumeCalculator.js"></script>
+</body>
+</html> 

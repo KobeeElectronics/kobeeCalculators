@@ -338,6 +338,10 @@ button:hover {
     margin: 10px 0;
 }
 
+#formulaImage {
+    width: 50%;
+}
+
 /* Full width for pulse width in monostable mode */
 .monostable-mode #pulseWidth {
     grid-column: 1 / -1; /* Span all columns */

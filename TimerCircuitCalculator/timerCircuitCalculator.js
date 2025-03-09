@@ -7,95 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const raUnit = document.getElementById('raUnit');
     const rbUnit = document.getElementById('rbUnit');
     const capacitanceUnit = document.getElementById('capacitanceUnit');
+    const configHeading = document.getElementById('configHeading');
     const configImage = document.getElementById('configImage');
     const formulaImage = document.getElementById('formulaImage');
-    const configHeading = document.getElementById('configHeading');
     const frequency = document.getElementById('frequency');
     const period = document.getElementById('period');
     const dutyCycle = document.getElementById('dutyCycle');
     const pulseWidth = document.getElementById('pulseWidth');
     const resetButton = document.getElementById('reset');
-    const canvas = document.getElementById('waveformCanvas');
-    const ctx = canvas.getContext('2d');
-    const highTimeDisplay = document.getElementById('highTimeDisplay');
-    const lowTimeDisplay = document.getElementById('lowTimeDisplay');
-
-    // Function to draw timing diagram
-    function drawTimingDiagram(isAstable, highTime, lowTime, totalPeriod) {
-        const width = canvas.width;
-        const height = canvas.height;
-        const padding = 40;
-        const graphHeight = height - 2 * padding;
-        
-        // Clear canvas
-        ctx.clearRect(0, 0, width, height);
-        
-        // Draw axes
-        ctx.beginPath();
-        ctx.strokeStyle = '#333';
-        ctx.lineWidth = 1;
-        ctx.moveTo(padding, padding);
-        ctx.lineTo(padding, height - padding);
-        ctx.lineTo(width - padding, height - padding);
-        ctx.stroke();
-        
-        // Add axes labels
-        ctx.fillStyle = '#555';
-        ctx.font = '12px Arial';
-        ctx.textAlign = 'right';
-        ctx.fillText('V', padding - 5, padding - 5);
-        ctx.textAlign = 'left';
-        ctx.fillText('t', width - padding + 5, height - padding + 15);
-        
-        // Draw waveform
-        ctx.beginPath();
-        ctx.strokeStyle = '#FED700';
-        ctx.lineWidth = 2;
-        
-        let x = padding;
-        let y = height - padding;
-        ctx.moveTo(x, y);
-        
-        if (isAstable && highTime && lowTime) {
-            // Draw repeating waveform for astable mode
-            const cycleWidth = (width - 2 * padding) / 2; // Show 2 cycles
-            const timeScale = cycleWidth / totalPeriod;
-            
-            // First cycle
-            ctx.lineTo(x, y);
-            ctx.lineTo(x, y - graphHeight);
-            x += highTime * timeScale;
-            ctx.lineTo(x, y - graphHeight);
-            ctx.lineTo(x, y);
-            x += lowTime * timeScale;
-            ctx.lineTo(x, y);
-            
-            // Second cycle
-            ctx.lineTo(x, y - graphHeight);
-            x += highTime * timeScale;
-            ctx.lineTo(x, y - graphHeight);
-            ctx.lineTo(x, y);
-            x += lowTime * timeScale;
-            ctx.lineTo(x, y);
-            
-            ctx.stroke();
-            
-        } else if (!isAstable && highTime) {
-            // Draw single pulse for monostable mode
-            const timeScale = (width - 2 * padding) / (highTime * 2);
-            
-            // Initial delay
-            x += 20;
-            ctx.lineTo(x, y);
-            ctx.lineTo(x, y - graphHeight);
-            x += highTime * timeScale;
-            ctx.lineTo(x, y - graphHeight);
-            ctx.lineTo(x, y);
-            ctx.lineTo(width - padding, y);
-            
-            ctx.stroke();
-        }
-    }
 
     // Function to clear all inputs and results
     function clearInputs() {
@@ -109,10 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         period.querySelector('.value').textContent = '0 ms';
         dutyCycle.querySelector('.value').textContent = '0%';
         pulseWidth.querySelector('.value').textContent = '0 ms';
-        highTimeDisplay.querySelector('.value').textContent = '0 ms (H)';
-        lowTimeDisplay.querySelector('.value').textContent = '0 ms (L)';
-        // Clear canvas
-        drawTimingDiagram(modeSelect.value === 'astable', 0, 0, 0);
     }
 
     // Mode change handler
@@ -121,31 +36,34 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInputs();
         
         const container = document.querySelector('.container');
+        const mode = this.value;
         
-        if (this.value === 'astable') {
+        if (mode === 'astable') {
             configHeading.textContent = '555 Timer - Astable Mode';
+            configImage.src = 'Images/555-Astable.svg';
+            formulaImage.src = 'Images/555-Astable-Equation.svg';
             rb.disabled = false;
             rb.parentElement.parentElement.style.display = 'block';
-            highTimeDisplay.style.display = 'block';
-            lowTimeDisplay.style.display = 'block';
             // Show all result cards in astable mode
             frequency.style.display = 'block';
             dutyCycle.style.display = 'block';
             period.style.display = 'block';
             pulseWidth.style.display = 'block';
+            pulseWidth.querySelector('.label').textContent = 'High Time / Low Time';
             container.classList.remove('monostable-mode');
         } else {
             configHeading.textContent = '555 Timer - Monostable Mode';
+            configImage.src = 'Images/555-Monostable.svg';
+            formulaImage.src = 'Images/555-Monostable-Equation.svg';
             rb.value = '';
             rb.disabled = true;
             rb.parentElement.parentElement.style.display = 'none';
-            highTimeDisplay.style.display = 'block';
-            lowTimeDisplay.style.display = 'none';
             // Only show pulse width in monostable mode
             frequency.style.display = 'none';
             dutyCycle.style.display = 'none';
             period.style.display = 'none';
             pulseWidth.style.display = 'block';
+            pulseWidth.querySelector('.label').textContent = 'Pulse Width';
             container.classList.add('monostable-mode');
         }
         calculateResults();
@@ -208,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const t = 1.1 * R * C;  // Pulse width
             const f = 1 / t;        // Frequency (single shot)
 
-            // Format and display results for monostable (passing null for lowTime)
+            // Format and display results for monostable
             displayResults(f, t, 100, t, null);
         }
     }
@@ -230,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (modeSelect.value === 'astable') {
-            // Format and display frequency only in astable mode
+            // Format and display frequency
             let freqDisplay;
             if (freq < 0.001) { // Less than 1 mHz
                 freqDisplay = (freq * 1000).toFixed(3) + ' µHz';
@@ -247,28 +165,10 @@ document.addEventListener('DOMContentLoaded', function() {
             frequency.querySelector('.value').textContent = freqDisplay;
             period.querySelector('.value').textContent = formatTime(totalPeriod);
             dutyCycle.querySelector('.value').textContent = dutyRatio.toFixed(1) + '%';
-            pulseWidth.querySelector('.label').textContent = 'High/Low Times';
-            pulseWidth.querySelector('.value').textContent = 
-                formatTime(highTime) + ' / ' + formatTime(lowTime);
+            pulseWidth.querySelector('.value').textContent = formatTime(highTime) + ' / ' + formatTime(lowTime);
         } else {
-            // Only show pulse width in monostable mode
-            pulseWidth.querySelector('.label').textContent = 'Pulse Width';
             pulseWidth.querySelector('.value').textContent = formatTime(highTime);
         }
-        
-        // Update timing displays
-        highTimeDisplay.querySelector('.value').textContent = formatTime(highTime) + ' (H)';
-        if (lowTime === null) {
-            // Monostable mode
-            lowTimeDisplay.style.display = 'none';
-        } else {
-            // Astable mode
-            lowTimeDisplay.querySelector('.value').textContent = formatTime(lowTime) + ' (L)';
-            lowTimeDisplay.style.display = 'block';
-        }
-
-        // Update timing diagram
-        drawTimingDiagram(modeSelect.value === 'astable', highTime, lowTime, totalPeriod);
     }
 
     // Event listener for reset button

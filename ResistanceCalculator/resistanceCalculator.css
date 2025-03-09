@@ -225,7 +225,7 @@ button:hover {
 
 .config-image img,
 .formula-image img {
-    max-width: 70%;
+    max-width:400px;
     height: auto;
     margin: 5px 0;
 }
@@ -288,6 +288,13 @@ button:hover {
     .formula-image img {
         max-width: 100%;
     }
+
+    .config-image img,
+.formula-image img {
+    max-width:300px;
+    height: auto;
+    margin: 5px 0;
+}
 
     button {
         width: 100%;

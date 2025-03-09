@@ -21,6 +21,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Constants
     const GBW = 1000000; // Gain-Bandwidth product (1 MHz typical for basic op-amps)
 
+    // Function to update resistor visibility
+    function updateResistorVisibility(config) {
+        const resistorFields = document.querySelectorAll('.resistance-group');
+        resistorFields.forEach(field => {
+            const requiredFor = field.dataset.requiredFor.split(',');
+            if (requiredFor.includes(config)) {
+                field.classList.remove('hidden');
+            } else {
+                field.classList.add('hidden');
+                // Clear the input when hiding
+                const input = field.querySelector('input');
+                if (input) input.value = '';
+            }
+        });
+
+        // Handle voltage input width
+        const voltageInputs = document.querySelectorAll('.voltage-input');
+        voltageInputs.forEach(field => {
+            const fullWidthFor = field.dataset.fullWidth?.split(',') || [];
+            if (fullWidthFor.includes(config)) {
+                field.style.gridColumn = '1 / -1';  // Span full width
+            } else {
+                field.style.gridColumn = '';  // Reset to default
+            }
+        });
+    }
+
     // Function to clear all inputs and results
     function clearInputs() {
         rf.value = '';
@@ -40,20 +67,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuration change handler
     configSelect.addEventListener('change', function() {
         const config = this.value;
+        
+        // Clear all inputs when mode changes
+        clearInputs();
+        
         configHeading.textContent = 'Op-Amp - ' + config.charAt(0).toUpperCase() + config.slice(1) + ' Configuration';
         configImage.src = 'Images/' + config.charAt(0).toUpperCase() + config.slice(1) + '-Amplifier.svg';
         formulaImage.src = 'Images/' + config.charAt(0).toUpperCase() + config.slice(1) + '-Formula.svg';
         
-        // Show/hide second input voltage field based on configuration
-        if (config === 'difference' || config === 'summing') {
-            inputVoltage2.parentElement.style.display = 'flex';
-            r2.parentElement.style.display = 'flex';
-        } else {
-            inputVoltage2.parentElement.style.display = 'none';
-            r2.parentElement.style.display = config === 'noninverting' ? 'flex' : 'none';
-        }
+        // Update resistor visibility
+        updateResistorVisibility(config);
         
-        calculateResults();
+        // Hide second input voltage field and R2
+        inputVoltage2.parentElement.style.display = 'none';
+        r2.parentElement.classList.add('hidden');
+
+        // Show/hide bandwidth based on configuration
+        bandwidth.style.display = config === 'inverting' ? 'none' : 'block';
+        inputImpedance.style.display = 'none';  // Always hide input impedance for basic modes
     });
 
     // Prevent negative numbers and trigger calculation on input
@@ -75,12 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function calculateResults() {
         const rfValue = parseFloat(rf.value);
         const r1Value = parseFloat(r1.value);
-        const r2Value = parseFloat(r2.value);
         const v1 = parseFloat(inputVoltage.value);
-        const v2 = parseFloat(inputVoltage2.value);
         const rfMult = parseFloat(rfUnit.value);
         const r1Mult = parseFloat(r1Unit.value);
-        const r2Mult = parseFloat(r2Unit.value);
 
         if (isNaN(rfValue) || isNaN(r1Value) || rfValue <= 0 || r1Value <= 0) {
             return;
@@ -89,36 +117,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Convert to base units (ohms)
         const Rf = rfValue * rfMult;
         const R1 = r1Value * r1Mult;
-        const R2 = r2Value * r2Mult;
 
-        let gainValue, vout, zin, bw;
+        let gainValue, vout, bw;
 
         switch(configSelect.value) {
             case 'inverting':
                 gainValue = -Rf / R1;
                 vout = gainValue * v1;
-                zin = R1;
                 break;
 
             case 'noninverting':
-                if (isNaN(R2)) return;
                 gainValue = 1 + (Rf / R1);
                 vout = gainValue * v1;
-                zin = R1 + R2;
-                break;
-
-            case 'difference':
-                if (isNaN(R2) || isNaN(v2)) return;
-                gainValue = Rf / R1;
-                vout = gainValue * (v1 - v2);
-                zin = R1;
-                break;
-
-            case 'summing':
-                if (isNaN(R2) || isNaN(v2)) return;
-                gainValue = -Rf / R1;
-                vout = gainValue * (v1 + v2);
-                zin = R1;
                 break;
         }
 
@@ -126,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         bw = GBW / Math.abs(gainValue);
 
         // Format and display results
-        displayResults(gainValue, vout, zin, bw);
+        displayResults(gainValue, vout, 0, bw);
     }
 
     function displayResults(gainValue, vout, zin, bw) {
@@ -136,27 +146,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Format output voltage
         outputVoltage.querySelector('.value').textContent = vout.toFixed(3) + ' V';
 
-        // Format input impedance with appropriate unit
-        let impedanceDisplay;
-        if (zin >= 1000000) {
-            impedanceDisplay = (zin / 1000000).toFixed(2) + ' MΩ';
-        } else if (zin >= 1000) {
-            impedanceDisplay = (zin / 1000).toFixed(2) + ' kΩ';
-        } else {
-            impedanceDisplay = zin.toFixed(1) + ' Ω';
+        // Format bandwidth with appropriate unit (only if not in inverting mode)
+        if (configSelect.value !== 'inverting') {
+            let bwDisplay;
+            if (bw >= 1000000) {
+                bwDisplay = (bw / 1000000).toFixed(2) + ' MHz';
+            } else if (bw >= 1000) {
+                bwDisplay = (bw / 1000).toFixed(2) + ' kHz';
+            } else {
+                bwDisplay = bw.toFixed(1) + ' Hz';
+            }
+            bandwidth.querySelector('.value').textContent = bwDisplay;
         }
-        inputImpedance.querySelector('.value').textContent = impedanceDisplay;
-
-        // Format bandwidth with appropriate unit
-        let bwDisplay;
-        if (bw >= 1000000) {
-            bwDisplay = (bw / 1000000).toFixed(2) + ' MHz';
-        } else if (bw >= 1000) {
-            bwDisplay = (bw / 1000).toFixed(2) + ' kHz';
-        } else {
-            bwDisplay = bw.toFixed(1) + ' Hz';
-        }
-        bandwidth.querySelector('.value').textContent = bwDisplay;
     }
 
     // Event listener for reset button

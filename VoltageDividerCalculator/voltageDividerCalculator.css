@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -18,11 +18,13 @@ body {
     display: flex;
     gap: 20px;
     max-width: 1000px;
-    width: 100%;
-    background-color: white;
+    width: 95%;
+    background-color: #ffffff;
     border-radius: 15px;
     min-height: 500px;
     padding: 20px;
+    margin: 10px;
+    overflow-x: hidden;
 }
 
 .calculator-panel {

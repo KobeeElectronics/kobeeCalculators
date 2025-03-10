@@ -27,7 +27,7 @@ body {
 }
 
 .calculator-panel {
-    flex: 0.8;
+    flex: 1;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@ body {
 }
 
 .formula-panel {
-    flex: 1.2;
+    flex: 1;
     padding: 10px;
     border-left: 2px solid #eee;
     display: flex;

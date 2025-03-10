@@ -19,16 +19,44 @@
                 </div>
                 <div class="input-grid">
                     <div class="input-field">
-                        <input type="number" id="inputVoltage" placeholder="Input Voltage (V)" step="any">
+                        <label for="inputVoltage">Input Voltage</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="inputVoltage" placeholder="Input Voltage" step="any">
+                            <span class="unit">V</span>
+                        </div>
                     </div>
                     <div class="input-field">
-                        <input type="number" id="r1" placeholder="R1 (Ω)" step="any">
+                        <label for="r1">Upper Resistor (R1)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="r1" placeholder="R1" step="any">
+                            <select class="unit-select" id="r1Unit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="input-field">
-                        <input type="number" id="r2" placeholder="R2 (Ω)" step="any">
+                        <label for="r2">Lower Resistor (R2)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="r2" placeholder="R2" step="any">
+                            <select class="unit-select" id="r2Unit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="input-field" id="rloadField" style="display: none;">
-                        <input type="number" id="rload" placeholder="RLoad (Ω)" step="any">
+                        <label for="rload">Load Resistor</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="rload" placeholder="RLoad" step="any">
+                            <select class="unit-select" id="rloadUnit">
+                                <option value="1">Ω</option>
+                                <option value="1000">kΩ</option>
+                                <option value="1000000">MΩ</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="button-group">

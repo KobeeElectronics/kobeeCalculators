@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const r1Input = document.getElementById('r1');
     const r2Input = document.getElementById('r2');
     const rloadInput = document.getElementById('rload');
+    const r1Unit = document.getElementById('r1Unit');
+    const r2Unit = document.getElementById('r2Unit');
+    const rloadUnit = document.getElementById('rloadUnit');
     const rloadField = document.getElementById('rloadField');
     const configImage = document.getElementById('configImage');
     const formulaImage = document.getElementById('formulaImage');
@@ -15,12 +18,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const powerPercentage = document.getElementById('powerPercentage');
     const resetButton = document.getElementById('reset');
 
+    // Function to update input styling
+    function updateInputStyle(input) {
+        if (input.value.trim() !== '') {
+            input.classList.add('has-value');
+        } else {
+            input.classList.remove('has-value');
+        }
+    }
+
     // Function to clear all inputs and results
     function clearInputs() {
         inputVoltage.value = '';
         r1Input.value = '';
         r2Input.value = '';
         rloadInput.value = '';
+        r1Unit.value = '1';
+        r2Unit.value = '1';
+        rloadUnit.value = '1';
+        
+        // Remove has-value class from all inputs
+        [inputVoltage, r1Input, r2Input, rloadInput].forEach(input => {
+            input.classList.remove('has-value');
+        });
+
         outputVoltage.querySelector('.value').textContent = '0 V';
         currentFlow.querySelector('.value').textContent = '0 mA';
         powerDissipation.querySelector('.value').textContent = '0 mW';
@@ -59,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.value < 0) {
             e.target.value = '';
         }
+        updateInputStyle(e.target);
         calculateResults();
     }
 
@@ -73,11 +95,16 @@ document.addEventListener('DOMContentLoaded', function() {
         return Number(num.toFixed(3));
     }
 
+    // Convert resistance value based on unit
+    function getResistanceInOhms(value, unit) {
+        return parseFloat(value) * parseFloat(unit);
+    }
+
     // Calculate results based on mode
     function calculateResults() {
         const vin = parseFloat(inputVoltage.value);
-        const r1 = parseFloat(r1Input.value);
-        const r2 = parseFloat(r2Input.value);
+        const r1 = getResistanceInOhms(r1Input.value, r1Unit.value);
+        const r2 = getResistanceInOhms(r2Input.value, r2Unit.value);
         
         if (isNaN(vin) || isNaN(r1) || isNaN(r2) || vin < 0 || r1 <= 0 || r2 <= 0) {
             return; // Silently return if inputs are invalid
@@ -86,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modeSelect.value === 'noload') {
             calculateNoLoad(vin, r1, r2);
         } else {
-            const rload = parseFloat(rloadInput.value);
+            const rload = getResistanceInOhms(rloadInput.value, rloadUnit.value);
             if (isNaN(rload) || rload <= 0) {
                 return; // Silently return if load resistance is invalid
             }
@@ -149,6 +176,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listener for reset button
     resetButton.addEventListener('click', clearInputs);
+
+    // Handle unit changes
+    function handleUnitChange(e) {
+        // Update the associated input's styling
+        let input;
+        switch(e.target.id) {
+            case 'r1Unit':
+                input = r1Input;
+                break;
+            case 'r2Unit':
+                input = r2Input;
+                break;
+            case 'rloadUnit':
+                input = rloadInput;
+                break;
+        }
+        if (input && input.value.trim() !== '') {
+            input.classList.add('has-value');
+        }
+        calculateResults();
+    }
+
+    // Add event listeners for unit changes
+    r1Unit.addEventListener('change', handleUnitChange);
+    r2Unit.addEventListener('change', handleUnitChange);
+    rloadUnit.addEventListener('change', handleUnitChange);
 
     // Initialize the UI
     modeSelect.dispatchEvent(new Event('change'));

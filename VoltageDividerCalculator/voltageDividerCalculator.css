@@ -234,11 +234,11 @@ button:hover {
 }
 
 #formulaImage{
-    max-width: 35%;
+    max-width: 50%;
 }
 
 #configImage{
-    max-width: 70%;
+    max-width: 1000%;
 }
 
 @media (max-width: 900px) {

@@ -3,32 +3,31 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-    gap: 20px;
 }
 
 .container {
     display: flex;
     gap: 20px;
-    max-width: 1200px;
+    max-width: 1000px;
     width: 100%;
     background-color: white;
-    padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
+    padding: 20px;
 }
 
 .calculator-panel {
     flex: 1;
-    padding: 10px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     max-width: 40%;
@@ -36,7 +35,7 @@ body {
 
 .formula-panel {
     flex: 1.5;
-    padding: 10px;
+    padding: 15px;
     border-left: 2px solid #eee;
     display: flex;
     flex-direction: column;
@@ -54,98 +53,119 @@ body {
 
 h2, h3 {
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
 .voltage-grid {
     display: grid;
-    grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
     margin-bottom: 15px;
-    align-items: start;
 }
 
 .input-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    min-width: 0; /* Prevent overflow */
+    gap: 6px;
 }
 
 .input-field label {
     font-weight: 600;
     color: #555;
     font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .input-with-unit {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: stretch;
     width: 100%;
-    min-width: 0; /* Prevent overflow */
 }
 
 .input-with-unit input {
     flex: 1;
-    padding: 12px;
+    padding: 10px 12px;
     border: 2px solid #e9ecef;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 8px 0 0 8px;
+    font-size: 15px;
     transition: all 0.3s;
-    min-width: 0; /* Prevent overflow */
     width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    border-right: none;
 }
 
 .input-with-unit input:focus {
     outline: none;
     border-color: #FED700;
-    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
+    box-shadow: -2px 0 0 2px rgba(254, 215, 0, 0.2);
 }
 
-.unit {
+.unit-select {
+    padding: 0 8px;
+    min-width: 45px;
+    border: 2px solid #e9ecef;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    background-color: #f8f9fa;
     color: #555;
     font-weight: 600;
-    font-size: 14px;
-    min-width: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: default;
+    text-align: center;
+}
+
+.input-with-unit input:focus + .unit-select {
+    border-color: #FED700;
+    border-left: none;
+    box-shadow: 2px 0 0 2px rgba(254, 215, 0, 0.2);
+}
+
+.input-with-unit input:focus + .unit-select:disabled {
+    background-color: #f8f9fa;
+    color: #555;
+    opacity: 1;
 }
 
 .frequency-control {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 10px;
+    gap: 6px;
+    margin-top: 5px;
 }
 
 .frequency-input {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: stretch;
+    gap: 0;
 }
 
 .frequency-input input {
     flex: 1;
-    padding: 12px;
+    padding: 10px 12px;
     border: 2px solid #e9ecef;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 8px 0 0 8px;
+    font-size: 15px;
     transition: all 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    border-right: none;
 }
 
 .frequency-input input:focus {
     outline: none;
     border-color: #FED700;
-    box-shadow: 0 0 0 2px rgba(254, 215, 0, 0.2);
+    box-shadow: -2px 0 0 2px rgba(254, 215, 0, 0.2);
 }
 
 .waveform-container {
@@ -165,19 +185,20 @@ h2, h3 {
 .button-group {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 #reset {
-    padding: 8px 100px;
+    padding: 10px 100px;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
     background-color: #f44336;
     color: white;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #reset:hover {
@@ -186,7 +207,7 @@ h2, h3 {
 
 .formula-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
@@ -256,24 +277,16 @@ h2, h3 {
     margin-bottom: 5px;
 }
 
-.learn-more {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.learn-button {
-    display: inline-block;
-    padding: 8px 20px;
-    background-color: #fed700;
+.period-display {
     color: #555;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: transform 0.2s, background-color 0.2s;
+    font-size: 16px;
+    margin-top: 4px;
+    padding-left: 2px;
 }
 
-.learn-button:hover {
-    transform: translateY(-2px);
+.period-display span {
+    font-weight: 600;
+    color: #333;
 }
 
 @media (max-width: 1024px) {
@@ -283,22 +296,67 @@ h2, h3 {
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
     .container {
         flex-direction: column;
+        padding: 15px;
+        gap: 15px;
     }
     
     .calculator-panel {
         max-width: 100%;
+        padding: 0;
     }
     
     .formula-panel {
         border-left: none;
         border-top: 2px solid #eee;
-        padding-top: 20px;
+        padding: 15px 0 0 0;
+    }
+
+    .voltage-grid {
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .input-field {
+        gap: 4px;
+    }
+
+    .input-field label {
+        font-size: 13px;
+    }
+
+    .input-with-unit input {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .unit-select {
+        padding: 0 6px;
+        min-width: 40px;
+        font-size: 13px;
+    }
+
+    .frequency-control {
+        gap: 4px;
+    }
+
+    .frequency-input input {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    #reset {
+        padding: 8px 50px;
+        width: 100%;
+        max-width: 300px;
     }
 
     .formula-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 
@@ -308,51 +366,70 @@ h2, h3 {
 
     .formula-card h4 {
         font-size: 13px;
-    }
-
-    .equations p {
-        font-size: 12px;
-    }
-
-    #reset {
-        padding: 8px 50px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 15px;
-    }
-
-    .voltage-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .input-field label {
-        font-size: 13px;
-    }
-
-    .input-with-unit input {
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    .unit {
-        font-size: 13px;
-    }
-
-    .formula-card {
-        padding: 8px;
-    }
-
-    .formula-card h4 {
-        font-size: 12px;
         margin-bottom: 6px;
     }
 
     .equations p {
-        font-size: 11px;
+        font-size: 12px;
         line-height: 1.4;
+    }
+
+    .period-display {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .voltage-grid {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    h2, h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .waveform-container {
+        height: 280px;
+    }
+
+    .waveform-container canvas {
+        height: 220px !important;
+    }
+
+    .unit-select {
+        padding: 0 4px;
+        min-width: 35px;
+        font-size: 12px;
+    }
+
+    .period-display {
+        font-size: 16px;
+    }
+}
+
+/* iOS Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+    input[type="number"] {
+        font-size: 16px !important;
+    }
+    
+    .input-with-unit input,
+    .frequency-input input {
+        padding: 8px 10px;
+    }
+
+    .unit-select {
+        padding: 0 6px;
     }
 } 

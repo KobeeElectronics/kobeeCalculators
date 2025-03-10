@@ -17,28 +17,36 @@
                         <label>Peak Voltage (Vp):</label>
                         <div class="input-with-unit">
                             <input type="number" id="vp" placeholder="Enter value" step="any">
-                            <span class="unit">V</span>
+                            <select class="unit-select" disabled>
+                                <option>V</option>
+                            </select>
                         </div>
                     </div>
                     <div class="input-field">
-                        <label>Peak-to-Peak Voltage (Vp-p):</label>
+                        <label>Peak-to-Peak (Vp-p):</label>
                         <div class="input-with-unit">
                             <input type="number" id="vpp" placeholder="Enter value" step="any">
-                            <span class="unit">V</span>
+                            <select class="unit-select" disabled>
+                                <option>V</option>
+                            </select>
                         </div>
                     </div>
                     <div class="input-field">
                         <label>RMS Voltage (Vrms):</label>
                         <div class="input-with-unit">
                             <input type="number" id="vrms" placeholder="Enter value" step="any">
-                            <span class="unit">V</span>
+                            <select class="unit-select" disabled>
+                                <option>V</option>
+                            </select>
                         </div>
                     </div>
                     <div class="input-field">
                         <label>Average Voltage (Vavg):</label>
                         <div class="input-with-unit">
                             <input type="number" id="vavg" placeholder="Enter value" step="any">
-                            <span class="unit">V</span>
+                            <select class="unit-select" disabled>
+                                <option>V</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -46,7 +54,12 @@
                     <label>Frequency:</label>
                     <div class="frequency-input">
                         <input type="number" id="frequency" value="50" min="1" max="1000" step="1">
-                        <span class="unit">Hz</span>
+                        <select class="unit-select" disabled>
+                            <option>Hz</option>
+                        </select>
+                    </div>
+                    <div class="period-display">
+                        Period = <span id="period">0.02</span> seconds
                     </div>
                 </div>
                 <div class="button-group">
@@ -56,7 +69,7 @@
         </div>
         <div class="formula-panel">
             <div class="waveform-container">
-                <h3>Waveform Visualization</h3>
+                <h3>Waveform Visualisation</h3>
                 <canvas id="waveformChart"></canvas>
             </div>
             <div class="formula-grid">
@@ -92,9 +105,6 @@
                         <p>Vavg = 2√2 × Vrms ÷ π</p>
                     </div>
                 </div>
-            </div>
-            <div class="learn-more">
-                <a href="https://kobee.com.au/blogs/calculators" class="learn-button" target="_blank">Other Calculators &#8594;</a>
             </div>
         </div>
     </div>

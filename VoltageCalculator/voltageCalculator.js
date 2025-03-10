@@ -4,6 +4,7 @@ const vppInput = document.getElementById('vpp');
 const vrmsInput = document.getElementById('vrms');
 const vavgInput = document.getElementById('vavg');
 const frequencyInput = document.getElementById('frequency');
+const periodDisplay = document.getElementById('period');
 const resetButton = document.getElementById('reset');
 
 // Constants
@@ -203,6 +204,17 @@ function updateFormulaHighlighting(sourceId) {
     }
 }
 
+// Function to update period based on frequency
+function updatePeriod() {
+    const frequency = parseFloat(frequencyInput.value);
+    if (!isNaN(frequency) && frequency > 0) {
+        const period = 1 / frequency;
+        periodDisplay.textContent = period.toFixed(6);
+    } else {
+        periodDisplay.textContent = '0';
+    }
+}
+
 // Event listeners with longer debounce and separate update functions
 const debouncedUpdate = debounce((source, value) => {
     let values;
@@ -234,10 +246,13 @@ const debouncedUpdate = debounce((source, value) => {
     if (source !== 'vrms') vrmsInput.value = values.vrms.toFixed(4);
     if (source !== 'vavg') vavgInput.value = values.vavg.toFixed(4);
     
+    // Update period
+    updatePeriod();
+    
     // Update visualizations
     updateWaveform(values);
     updateFormulaHighlighting(source);
-}, 500); // Increased to 500ms
+}, 500);
 
 // Separate quick update for formula highlighting
 const quickHighlight = debounce((source) => {
@@ -265,6 +280,7 @@ vavgInput.addEventListener('input', (e) => {
 // Frequency changes
 const debouncedFrequencyUpdate = debounce((e) => {
     const value = e.target.value;
+    updatePeriod();
     if (vpInput.value) debouncedUpdate('vp', vpInput.value);
     else if (vppInput.value) debouncedUpdate('vpp', vppInput.value);
     else if (vrmsInput.value) debouncedUpdate('vrms', vrmsInput.value);
@@ -274,22 +290,15 @@ const debouncedFrequencyUpdate = debounce((e) => {
 frequencyInput.addEventListener('input', debouncedFrequencyUpdate);
 resetButton.addEventListener('click', resetFields);
 
-// Reset all fields
+// Function to reset fields
 function resetFields() {
     vpInput.value = '';
     vppInput.value = '';
     vrmsInput.value = '';
     vavgInput.value = '';
-    
-    // Reset chart
-    waveformChart.data.datasets.forEach(dataset => {
-        dataset.data = [];
-    });
-    waveformChart.update('none');
-    
-    // Remove formula highlighting
-    document.querySelectorAll('.formula-card').forEach(card => card.classList.remove('active'));
-    document.querySelectorAll('.equations p').forEach(eq => eq.classList.remove('active'));
+    periodDisplay.textContent = '0.02';
+    updateWaveform({ vp: 0 });
+    clearFormulaHighlighting();
 }
 
 // Initialize calculator

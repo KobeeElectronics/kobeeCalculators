@@ -12,7 +12,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
 .container {
@@ -21,18 +20,18 @@ body {
     max-width: 1000px;
     width: 100%;
     background-color: white;
-    padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-height: 500px;
+    padding: 20px;
 }
 
 .calculator-panel {
     flex: 1;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
-    max-width: 50%;
+    min-width: 0;
+    width: 100%;
 }
 
 .formula-panel {
@@ -41,15 +40,6 @@ body {
     border-left: 2px solid #eee;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    min-width: 50%;
-}
-
-.formula-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     align-items: center;
 }
 

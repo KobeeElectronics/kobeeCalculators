@@ -27,7 +27,7 @@ body {
 }
 
 .calculator-panel {
-    flex: 1;
+    flex: 0.8;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -36,13 +36,12 @@ body {
 }
 
 .formula-panel {
-    flex: 1;
+    flex: 1.2;
     padding: 10px;
     border-left: 2px solid #eee;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 0;
 }
 
 h1 {
@@ -327,11 +326,4 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-#calculationImage {
-    width: 100%;
-    text-align: center;
-    font-size: 1.2em;
-    margin: 20px 0;
 }

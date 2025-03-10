@@ -34,15 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modeSelect.value === 'series') {
             networkTitle.textContent = 'Series Network';
             headerImage.src = 'Images/Resistors-In-Series.svg';
-            calculationImage.textContent = '$$\\mathbf{R_{TOTAL}=R_1+R_2+R_3 ...+R_N}$$';
+            calculationImage.src = 'Images/Series-Resistor-Equation.svg';
         } else {
             networkTitle.textContent = 'Parallel Network';
             headerImage.src = 'Images/Resistors-In-Parallel.svg';
-            calculationImage.textContent = '$$\\mathbf{\\frac{1}{R_{TOTAL}}=\\frac{1}{R_1}+\\frac{1}{R_2}+\\frac{1}{R_3}+ ...+\\frac{1}{R_N}}$$';
-        }
-        // Trigger MathJax to update the equations
-        if (window.MathJax) {
-            MathJax.typesetPromise([calculationImage]);
+            calculationImage.src = 'Images/Parallel-Resistor-Equation.svg';
         }
         calculateResult();
     });
@@ -181,14 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modeSelect.value === 'series') {
         networkTitle.textContent = 'Series Network';
         headerImage.src = 'Images/Resistors-In-Series.svg';
-        calculationImage.textContent = '$$\\mathbf{R_{TOTAL}=R_1+R_2+R_3 ...+R_N}$$';
+        calculationImage.src = 'Images/Series-Resistor-Equation.svg';
     } else {
         networkTitle.textContent = 'Parallel Network';
         headerImage.src = 'Images/Resistors-In-Parallel.svg';
-        calculationImage.textContent = '$$\\mathbf{\\frac{1}{R_{TOTAL}}=\\frac{1}{R_1}+\\frac{1}{R_2}+\\frac{1}{R_3}+ ...+\\frac{1}{R_N}}$$';
-    }
-    // Trigger initial MathJax rendering
-    if (window.MathJax) {
-        MathJax.typesetPromise([calculationImage]);
+        calculationImage.src = 'Images/Parallel-Resistor-Equation.svg';
     }
 });

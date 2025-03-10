@@ -6,15 +6,6 @@
     <title>Resistance Network Calculator</title>
     <link rel="stylesheet" href="resistanceCalculator.css">
 </head>
-<script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      }
-    };
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  
 <body>
     <div class="container">
         <div class="calculator-panel">
@@ -57,7 +48,9 @@
                     <h3 id="network-title">Series Network</h3>
                     <img id="headerImage" src="Images/Resistors-In-Series.svg" alt="Resistor Configuration" />
                 </div>
-                <h3 id="calculationImage">$$R_{TOTAL}=R_1+R_2+R_3 ...+R_N$$</h3>
+                <div class="formula-image">
+                    <img id="calculationImage" src="Images/Series-Resistor-Equation.svg" alt="Calculation Formula" />
+                </div>
             </div>
         </div>
     </div>
